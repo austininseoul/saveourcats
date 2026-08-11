@@ -22,31 +22,9 @@
     --gutter: clamp(1.15rem, 5vw, 3rem);
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --paper:      #0E0F12;
-      --paper-2:    #16181C;
-      --ink:        #ECEBE7;
-      --ink-soft:   #A6A6AE;
-      --ink-faint:  #71717B;
-      --rule:       #262830;
-      --rule-hard:  #ECEBE7;
-      --alarm:      #E4574A;
-      --mark:       #6B5A16;
-      --mark-soft:  rgba(214, 186, 62, 0.20);
-      --doc:        #7FA8BC;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #0E0F12; --paper-2: #16181C; --ink: #ECEBE7; --ink-soft: #A6A6AE;
-    --ink-faint: #71717B; --rule: #262830; --rule-hard: #ECEBE7; --alarm: #E4574A;
-    --mark: #6B5A16; --mark-soft: rgba(214, 186, 62, 0.20); --doc: #7FA8BC;
-  }
-  :root[data-theme="light"] {
-    --paper: #FBFAF8; --paper-2: #F1EFEA; --ink: #16161A; --ink-soft: #4C4C55;
-    --ink-faint: #85858F; --rule: #DEDBD4; --rule-hard: #16161A; --alarm: #A81E13;
-    --mark: #F5E27A; --mark-soft: rgba(245, 226, 122, 0.42); --doc: #2C4A57;
-  }
+  /* Light only — deliberate. This reads as a printed document, and the
+     evidence photographs are lit for a white ground. */
+  :root { color-scheme: light; }
 
   body {
     background: var(--paper); color: var(--ink);
@@ -166,6 +144,28 @@
   }
   .exhibit .foot b { color: var(--alarm); }
 
+  /* ── figures ── */
+  figure { margin: 2.75rem 0; }
+  figure.wide { max-width: 52rem; }
+  figure img {
+    width: 100%; height: auto; display: block;
+    border: 1px solid var(--rule);
+  }
+  figure.portrait img { max-width: 30rem; }
+  figcaption {
+    font-family: var(--sans); font-size: 0.85rem;
+    line-height: 1.5; color: var(--ink-faint);
+    margin-top: 0.85rem; max-width: 46ch;
+    padding-left: 0.9rem; border-left: 2px solid var(--alarm);
+  }
+  figcaption b { color: var(--ink-soft); font-weight: 600; }
+  figcaption .stamp {
+    display: block; font-family: var(--mono);
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-faint);
+    margin-top: 0.4rem;
+  }
+
   /* ── pull quote ── */
   .pull {
     margin: 2.5rem 0; padding: 0 0 0 1.5rem;
@@ -277,6 +277,17 @@
       Everything about that arrival was ordinary. Nothing about the twenty-seven days
       since has been.
     </p>
+
+    <figure class="portrait">
+      <img src="img/before-the-flight.jpg"
+           alt="Orion and Nova on a bed, each wearing a small t-shirt, the night before their flight to Malaysia.">
+      <figcaption>
+        <b>Orion and Nova on the night of 10 July</b>, the evening before they were collected
+        for the journey. Their owner had dressed them for the trip. They had never been
+        confined anywhere before.
+        <span class="stamp">Owner's photograph · 10 July 2026</span>
+      </figcaption>
+    </figure>
 
     <p>
       On 19 July the release date was confirmed: <strong>30 July 2026</strong>, at the end of
@@ -413,6 +424,17 @@
       owner has described crying daily. Travel plans made around the 30 July release date
       have since come and gone.
     </p>
+
+    <figure class="portrait">
+      <img src="img/visit-day-22.jpg"
+           alt="One of the cats being held during a supervised visit at the quarantine station on 6 August 2026.">
+      <figcaption>
+        <b>Day 22, inside the station.</b> Supervised visits are permitted. This was taken
+        on 6 August — the same visit at which Nova's weight loss and respiratory symptoms
+        were first noticed.
+        <span class="stamp">Owner's photograph · 6 August 2026</span>
+      </figcaption>
+    </figure>
 
     <div class="facts">
       <h3>The case, in figures</h3>
