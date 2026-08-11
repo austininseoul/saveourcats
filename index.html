@@ -264,49 +264,83 @@
   }
 
 
-  /* ── chat transcript ── */
+  /* ── chat transcript — WhatsApp ── */
   .chat {
     margin: 2.25rem 0 1.25rem;
-    max-width: 34rem;
-    background: #ECE5DD;
-    border: 1px solid var(--rule);
-    padding: 1.1rem 0.9rem 0.9rem;
-    display: grid; gap: 0.4rem;
+    max-width: 32rem;
+    background: #EFEAE2;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(0,0,0,0.022) 0 3px, transparent 3px),
+      radial-gradient(circle at 62% 44%, rgba(0,0,0,0.02) 0 5px, transparent 5px),
+      radial-gradient(circle at 34% 78%, rgba(0,0,0,0.022) 0 4px, transparent 4px),
+      radial-gradient(circle at 84% 88%, rgba(0,0,0,0.018) 0 6px, transparent 6px);
+    background-size: 148px 148px;
+    border: 1px solid #D7D0C7;
+    border-radius: 6px;
+    padding: 0.9rem 0.75rem 1rem;
+    display: grid; gap: 0.32rem;
+    font-family: var(--sans);
   }
   .chat .day {
     justify-self: center;
-    background: rgba(255,255,255,0.75);
-    color: var(--ink-soft);
-    font-size: 0.68rem; font-weight: 600;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 0.25rem 0.7rem; border-radius: 6px;
-    margin-bottom: 0.35rem;
+    background: #FFFFFF;
+    color: #54656F;
+    font-size: 0.66rem; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 0.28rem 0.75rem; border-radius: 7px;
+    box-shadow: 0 1px 0.5px rgba(11,20,26,0.13);
+    margin: 0.15rem 0 0.45rem;
   }
   .msg {
-    position: relative; max-width: 84%;
-    padding: 0.5rem 0.7rem 0.42rem;
-    border-radius: 8px; font-size: 0.94rem; line-height: 1.42;
-    box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+    position: relative; max-width: 82%;
+    padding: 0.38rem 0.55rem 0.34rem 0.6rem;
+    font-size: 0.925rem; line-height: 1.4;
+    color: #111B21;
+    border-radius: 7.5px;
+    box-shadow: 0 1px 0.5px rgba(11,20,26,0.13);
   }
   .msg.in  { justify-self: start; background: #FFFFFF; border-top-left-radius: 0; }
-  .msg.out { justify-self: end;   background: #FFF6C9; border-top-right-radius: 0; }
+  .msg.out { justify-self: end;   background: #D9FDD3; border-top-right-radius: 0; }
+
+  /* bubble tails */
+  .msg::before {
+    content: ""; position: absolute; top: 0; width: 0; height: 0;
+    border-style: solid;
+  }
+  .msg.in::before {
+    left: -8px; border-width: 0 8px 8px 0;
+    border-color: transparent #FFFFFF transparent transparent;
+  }
+  .msg.out::before {
+    right: -8px; border-width: 0 0 8px 8px;
+    border-color: transparent transparent transparent #D9FDD3;
+  }
+
   .msg .who {
-    display: block; font-size: 0.74rem; font-weight: 700;
-    color: var(--alarm); margin-bottom: 0.15rem;
+    display: block; font-size: 0.76rem; font-weight: 500;
+    color: #C1533F; margin-bottom: 0.1rem;
+  }
+  .msg .fwd {
+    display: block; font-size: 0.76rem; font-style: italic;
+    color: #667781; margin-bottom: 0.1rem;
   }
   .msg .t {
-    float: right; font-size: 0.64rem; color: var(--ink-faint);
-    margin: 0.45rem 0 0 0.6rem; white-space: nowrap;
+    float: right; font-size: 0.66rem; color: #667781;
+    margin: 0.4rem -0.1rem -0.1rem 0.55rem; white-space: nowrap;
   }
-  .msg.key { background: var(--accent); font-weight: 600; }
-  .msg.key .t { color: rgba(0,0,0,0.45); }
-  .msg .fwd {
-    display: block; font-size: 0.7rem; font-style: italic;
-    color: var(--ink-faint); margin-bottom: 0.2rem;
+  .msg.out .t::after {
+    content: " ✓✓"; color: #53BDEB; letter-spacing: -0.14em;
+  }
+  /* the decisive line: left as a normal bubble, marked up like a printout */
+  .msg.key mark {
+    background: var(--accent); color: #111B21;
+    padding: 0.06em 0.18em; font-weight: 600;
+    box-decoration-break: clone; -webkit-box-decoration-break: clone;
   }
   .chat-note {
+    font-family: var(--sans);
     font-size: 0.8rem; color: var(--ink-faint);
-    margin: 0.85rem 0 0; max-width: 46ch;
+    margin: 0.9rem 0 0; max-width: 46ch;
     padding-left: 0.9rem; border-left: 4px solid var(--accent);
   }
 
@@ -525,7 +559,7 @@
       <div class="msg in">Officer told me, they need to have a discussion<span class="t">11:25</span></div>
       <div class="msg in">I am waiting him to update me<span class="t">11:25</span></div>
       <div class="msg in">I will ask again on Monday<span class="t">11:26</span></div>
-      <div class="msg in key">FYI, few Agents have the same issues<span class="t">11:26</span></div>
+      <div class="msg in key"><mark>FYI, few Agents have the same issues</mark><span class="t">11:26</span></div>
     </div>
     <p class="chat-note">Reproduced verbatim from the WhatsApp record. Original screenshots on file.</p>
 
@@ -567,7 +601,7 @@
         <div class="msg out">Hm why asking for penalties if we need to do the RNATT again<span class="t">13:18</span></div>
         <div class="msg out"><span class="who">Andy Malaysia</span>No need<span class="t">13:19</span></div>
         <div class="msg out">Owner had asked if titre test is required and I already informed no need<span class="t">13:19</span></div>
-        <div class="msg in key">When I ask maqis they said no need. Now they need.<span class="t">13:21</span></div>
+        <div class="msg in key"><mark>When I ask maqis they said no need. Now they need.</mark><span class="t">13:21</span></div>
       </div>
       <p class="chat-note">
         Reproduced verbatim from the WhatsApp record; the original screenshot is on file.
