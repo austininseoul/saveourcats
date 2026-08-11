@@ -373,19 +373,57 @@
   .facts dd { margin: 0; font-size: 0.95rem; }
 
   /* ── timeline ── */
-  .tl { list-style: none; margin: 2rem 0 0; padding: 0; max-width: 46rem; }
-  .tl li {
-    display: grid; gap: 0.3rem 1.6rem; padding: 1.1rem 0;
-    border-top: 1px solid var(--rule);
+  .tline {
+    list-style: none; margin: 2.25rem 0 0; padding: 0;
+    max-width: 44rem;
   }
-  @media (min-width: 680px) { .tl li { grid-template-columns: 7.5rem 1fr; align-items: baseline; } }
-  .tl .d {
-    font-family: var(--sans); font-weight: 600; font-size: 0.78rem;
-    font-variant-numeric: tabular-nums; color: var(--ink-faint);
-    white-space: nowrap;
+  .tline li {
+    position: relative;
+    padding: 0 0 1.6rem 2.1rem;
+    border-left: 2px solid var(--rule);
+    margin-left: 0.5rem;
   }
-  .tl p { margin: 0; font-size: 0.98rem; max-width: 56ch; }
-  .tl .hot .d { color: var(--alarm); font-weight: 600; }
+  .tline li:last-child { border-left-color: transparent; padding-bottom: 0; }
+
+  /* the rail turns to the accent from the day they were due out —
+     everything below this point is time they should never have served */
+  .tline li.overdue { border-left-color: var(--accent); }
+
+  .tline li::before {
+    content: ""; position: absolute; left: -7px; top: 0.32rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--paper); border: 2px solid var(--rule);
+  }
+  .tline li.overdue::before { border-color: var(--accent); }
+  .tline li.hot::before { background: var(--accent); border-color: var(--accent); }
+  .tline li.now::before {
+    width: 16px; height: 16px; left: -9px; top: 0.24rem;
+    background: var(--ink); border-color: var(--ink);
+  }
+
+  .tline time {
+    display: block;
+    font-size: 0.76rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 0.2rem;
+  }
+  .tline li.hot time { color: var(--alarm); }
+  .tline li.now time { color: var(--ink); }
+  .tline p { margin: 0; font-size: 0.97rem; line-height: 1.55; max-width: 52ch; }
+  .tline li.hot p { font-weight: 500; }
+  .tline .tag {
+    display: inline-block; margin-left: 0.5rem;
+    font-size: 0.66rem; font-weight: 600; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--ink);
+    background: var(--accent); padding: 0.1rem 0.4rem;
+    vertical-align: 0.12em;
+  }
+  .tline .gap {
+    display: block; margin-top: 0.5rem;
+    font-size: 0.82rem; color: var(--ink-faint);
+  }
 
   /* ── action ── */
   .act { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 2rem 0 0; }
@@ -681,17 +719,52 @@
 
     <h2><span class="num">06</span>The full chronology</h2>
 
-    <ul class="tl">
-      <li><span class="d">15 Jul</span><p>Arrive KLIA from Jakarta with owner and registered agent.</p></li>
-      <li><span class="d">16 Jul</span><p>Admitted to quarantine shortly after midnight. All documents and fees in order.</p></li>
-      <li><span class="d">19 Jul</span><p>Release confirmed for 30 July, 11am–5pm.</p></li>
-      <li class="hot"><span class="d">30 Jul</span><p>Not released. A regulation issued roughly two days earlier is applied.</p></li>
-      <li><span class="d">2 Aug</span><p>No decision. “Officer needs to have a discussion.” Several other agents affected.</p></li>
-      <li><span class="d">6 Aug</span><p>Visit. Both cats distressed; Nova has lost weight and is sniffling.</p></li>
-      <li class="hot"><span class="d">7 Aug</span><p>MYR 2,000 compound demanded, with release one week later and no titre test. Paid same day.</p></li>
-      <li class="hot"><span class="d">10 Aug</span><p>Titre test requirement reinstated. No release date given.</p></li>
-      <li><span class="d">Today</span><p>Still held. No receipt, no compound notice, no date.</p></li>
-    </ul>
+    <ol class="tline">
+      <li>
+        <time datetime="2026-07-15">15 Jul</time>
+        <p>Orion and Nova arrive at KLIA from Jakarta, with their owner and a MAQIS-registered agent.</p>
+      </li>
+      <li>
+        <time datetime="2026-07-16">16 Jul</time>
+        <p>Admitted to quarantine shortly after midnight. All documents, vaccinations and fees in order.</p>
+      </li>
+      <li>
+        <time datetime="2026-07-19">19 Jul</time>
+        <p>Release confirmed for <strong>30 July, 11am–5pm</strong>. Arrangements are made around that date.</p>
+      </li>
+      <li class="hot overdue">
+        <time datetime="2026-07-30">30 Jul</time>
+        <p>
+          Not released. A regulation issued roughly two days earlier is applied to animals
+          admitted two weeks before it existed.
+          <span class="tag">Due out</span>
+          <span class="gap">Everything below this line is time they should not have served.</span>
+        </p>
+      </li>
+      <li class="overdue">
+        <time datetime="2026-08-02">2 Aug</time>
+        <p>No decision. “Officer needs to have a discussion.” Several other agents are affected by the same change.</p>
+      </li>
+      <li class="overdue">
+        <time datetime="2026-08-06">6 Aug</time>
+        <p>A visit. Both cats distressed; Nova has lost weight and is sniffling. Boarding charges accruing at MYR 80 a day.</p>
+      </li>
+      <li class="hot overdue">
+        <time datetime="2026-08-07">7 Aug</time>
+        <p>MYR 2,000 compound demanded — release one week later, and expressly no titre test. Paid the same day.</p>
+      </li>
+      <li class="hot overdue">
+        <time datetime="2026-08-10">10 Aug</time>
+        <p>Titre test requirement reinstated, contradicting 7 August. No release date given.</p>
+      </li>
+      <li class="now overdue">
+        <time>Today</time>
+        <p>
+          Still held. No receipt, no compound notice, no date.
+          <span class="gap">Day <span id="d3">27</span> in confinement · <span id="d4">13</span> days past the release date.</span>
+        </p>
+      </li>
+    </ol>
 
     <h2><span class="num">07</span>What is being asked</h2>
 
@@ -770,11 +843,15 @@
 <script>
   (function () {
     var start = new Date(Date.UTC(2026, 6, 15, 16, 10)); // 16 Jul 2026 00:10 MYT
-    var els = [document.getElementById('days'), document.getElementById('dh')];
+    var els = [document.getElementById('days'), document.getElementById('dh'), document.getElementById('d3')];
+    var due = new Date(Date.UTC(2026, 6, 29, 16, 0)); // 30 Jul 2026 MYT
     function tick() {
       var d = Math.floor((Date.now() - start.getTime()) / 86400000);
       if (d < 0) d = 0;
       els.forEach(function (el) { if (el) el.textContent = d; });
+      var over = Math.floor((Date.now() - due.getTime()) / 86400000);
+      var o = document.getElementById('d4');
+      if (o) o.textContent = over < 0 ? 0 : over;
     }
     tick();
     setInterval(tick, 60000);
