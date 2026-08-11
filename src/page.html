@@ -1,0 +1,526 @@
+<title>Caged 27 days. We paid. Then nothing. — saveourcats.my</title>
+
+<style>
+  :root {
+    --paper:      #FBFAF8;
+    --paper-2:    #F1EFEA;
+    --ink:        #16161A;
+    --ink-soft:   #4C4C55;
+    --ink-faint:  #85858F;
+    --rule:       #DEDBD4;
+    --rule-hard:  #16161A;
+    --alarm:      #A81E13;
+    --mark:       #F5E27A;
+    --mark-soft:  rgba(245, 226, 122, 0.42);
+    --doc:        #2C4A57;
+
+    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+    --col: 38rem;
+    --gutter: clamp(1.15rem, 5vw, 3rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:      #0E0F12;
+      --paper-2:    #16181C;
+      --ink:        #ECEBE7;
+      --ink-soft:   #A6A6AE;
+      --ink-faint:  #71717B;
+      --rule:       #262830;
+      --rule-hard:  #ECEBE7;
+      --alarm:      #E4574A;
+      --mark:       #6B5A16;
+      --mark-soft:  rgba(214, 186, 62, 0.20);
+      --doc:        #7FA8BC;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0E0F12; --paper-2: #16181C; --ink: #ECEBE7; --ink-soft: #A6A6AE;
+    --ink-faint: #71717B; --rule: #262830; --rule-hard: #ECEBE7; --alarm: #E4574A;
+    --mark: #6B5A16; --mark-soft: rgba(214, 186, 62, 0.20); --doc: #7FA8BC;
+  }
+  :root[data-theme="light"] {
+    --paper: #FBFAF8; --paper-2: #F1EFEA; --ink: #16161A; --ink-soft: #4C4C55;
+    --ink-faint: #85858F; --rule: #DEDBD4; --rule-hard: #16161A; --alarm: #A81E13;
+    --mark: #F5E27A; --mark-soft: rgba(245, 226, 122, 0.42); --doc: #2C4A57;
+  }
+
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: var(--serif); font-size: 18px; line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 72rem; margin: 0 auto; padding: 0 var(--gutter); }
+  .col { max-width: var(--col); }
+
+  /* ── publication masthead ── */
+  .pub {
+    display: flex; align-items: baseline; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.75rem 2rem;
+    padding: 1.5rem 0 1rem;
+    border-bottom: 3px double var(--rule-hard);
+  }
+  .pub .name {
+    margin: 0; font-family: var(--sans);
+    font-size: 1.02rem; font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .pub .name span { color: var(--alarm); }
+  .pub .tag {
+    margin: 0; font-family: var(--mono);
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ── article head ── */
+  .kicker {
+    font-family: var(--mono); font-size: 0.71rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--alarm); font-weight: 600;
+    margin: clamp(2rem, 5vw, 3.25rem) 0 1.1rem;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(2.45rem, 7.2vw, 5.1rem);
+    line-height: 0.99; letter-spacing: -0.032em;
+    text-wrap: balance; margin: 0; max-width: 17ch;
+  }
+  h1 #dh {
+    color: var(--alarm);
+    font-variant-numeric: tabular-nums;
+  }
+  .deck {
+    font-family: var(--sans); font-weight: 400;
+    font-size: clamp(1.08rem, 2.3vw, 1.32rem);
+    line-height: 1.5; color: var(--ink-soft);
+    max-width: 46ch; margin: 1.5rem 0 0; text-wrap: pretty;
+  }
+  .deck strong { color: var(--ink); font-weight: 600; }
+  .byline {
+    display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem;
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.06em; color: var(--ink-faint);
+    margin: 2rem 0 0; padding: 0.9rem 0;
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  }
+  .byline b { color: var(--ink-soft); font-weight: 500; }
+  .byline .live { color: var(--alarm); font-weight: 600; }
+
+  /* ── body ── */
+  article { padding: clamp(2rem, 5vw, 3rem) 0 0; }
+  article p { margin: 0 0 1.35rem; max-width: var(--col); text-wrap: pretty; }
+  .lede::first-letter {
+    float: left; font-size: 4.1rem; line-height: 0.82;
+    padding: 0.32rem 0.6rem 0 0; font-weight: 700;
+  }
+  h2 {
+    font-family: var(--sans); font-weight: 700;
+    font-size: clamp(1.15rem, 2.3vw, 1.42rem);
+    letter-spacing: -0.015em; line-height: 1.25;
+    margin: 3rem 0 1.1rem; max-width: 32ch; text-wrap: balance;
+  }
+  h2 .num {
+    display: block; font-family: var(--mono);
+    font-size: 0.68rem; letter-spacing: 0.16em;
+    color: var(--alarm); margin-bottom: 0.5rem; font-weight: 600;
+  }
+  strong { font-weight: 700; }
+  .mark { background: var(--mark-soft); box-shadow: 0 0 0 2px var(--mark-soft); }
+
+  /* ── exhibit: the documentary evidence ── */
+  .exhibit {
+    margin: 2.5rem 0 2.75rem;
+    border-top: 3px solid var(--rule-hard);
+    border-bottom: 1px solid var(--rule);
+    padding: 1.25rem 0 1.5rem;
+  }
+  .exhibit .tag {
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-faint); margin: 0 0 1.5rem;
+  }
+  .pair { display: grid; gap: 1.75rem; }
+  @media (min-width: 800px) { .pair { grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
+  .pair .when {
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.05em; color: var(--ink-faint);
+    margin: 0 0 0.7rem;
+  }
+  .pair blockquote {
+    margin: 0; font-size: clamp(1.18rem, 2.6vw, 1.5rem);
+    line-height: 1.36; letter-spacing: -0.012em; font-weight: 700;
+  }
+  .pair .after blockquote { color: var(--alarm); }
+  .pair .attr {
+    font-family: var(--sans); font-size: 0.84rem;
+    color: var(--ink-faint); margin: 0.85rem 0 0; max-width: 34ch;
+  }
+  .exhibit .foot {
+    font-family: var(--mono); font-size: 0.78rem;
+    color: var(--ink-soft); margin: 1.75rem 0 0;
+    padding-top: 1rem; border-top: 1px solid var(--rule);
+    max-width: none;
+  }
+  .exhibit .foot b { color: var(--alarm); }
+
+  /* ── pull quote ── */
+  .pull {
+    margin: 2.5rem 0; padding: 0 0 0 1.5rem;
+    border-left: 3px solid var(--alarm);
+    font-size: clamp(1.3rem, 3vw, 1.72rem);
+    line-height: 1.32; font-weight: 700;
+    letter-spacing: -0.018em; max-width: 30ch;
+  }
+
+  /* ── fact box ── */
+  .facts {
+    background: var(--paper-2); padding: clamp(1.35rem, 3vw, 1.85rem);
+    margin: 2.5rem 0; max-width: var(--col);
+  }
+  .facts h3 {
+    margin: 0 0 1rem; font-family: var(--mono);
+    font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 500;
+  }
+  .facts dl { margin: 0; display: grid; gap: 0.6rem 1.25rem; }
+  @media (min-width: 480px) { .facts dl { grid-template-columns: auto 1fr; } }
+  .facts dt {
+    font-family: var(--mono); font-size: 0.79rem;
+    color: var(--ink-faint); white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .facts dd { margin: 0; font-size: 0.95rem; }
+
+  /* ── timeline ── */
+  .tl { list-style: none; margin: 2rem 0 0; padding: 0; max-width: 46rem; }
+  .tl li {
+    display: grid; gap: 0.3rem 1.6rem; padding: 1.1rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  @media (min-width: 680px) { .tl li { grid-template-columns: 7.5rem 1fr; align-items: baseline; } }
+  .tl .d {
+    font-family: var(--mono); font-size: 0.77rem;
+    font-variant-numeric: tabular-nums; color: var(--ink-faint);
+    white-space: nowrap;
+  }
+  .tl p { margin: 0; font-size: 0.98rem; max-width: 56ch; }
+  .tl .hot .d { color: var(--alarm); font-weight: 600; }
+
+  /* ── action ── */
+  .act { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 2rem 0 0; }
+  @media (min-width: 740px) { .act { grid-template-columns: 1fr 1fr; } }
+  .act > div { background: var(--paper); padding: clamp(1.3rem, 3vw, 1.75rem); }
+  .act h3 { margin: 0 0 0.45rem; font-family: var(--sans); font-size: 0.95rem; font-weight: 700; }
+  .act p { margin: 0 0 0.8rem; font-family: var(--sans); font-size: 0.89rem; color: var(--ink-soft); max-width: 40ch; }
+  .act a {
+    font-family: var(--mono); font-size: 0.8rem; color: var(--alarm);
+    text-decoration: none; border-bottom: 1px solid currentColor;
+    overflow-wrap: anywhere;
+  }
+  .act a:hover, .act a:focus-visible { background: var(--mark-soft); }
+  .act .tel { display: block; font-family: var(--mono); font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.35rem; }
+
+  .note {
+    border-top: 3px double var(--rule-hard);
+    margin-top: 3.5rem; padding: 1.75rem 0 4rem;
+  }
+  .note p {
+    font-family: var(--sans); font-size: 0.87rem;
+    color: var(--ink-faint); max-width: 60ch; margin: 0 0 0.9rem;
+  }
+  .note b { color: var(--ink-soft); }
+
+  a:focus-visible { outline: 2px solid var(--alarm); outline-offset: 3px; }
+</style>
+
+<div class="wrap">
+
+  <div class="pub">
+    <p class="name">saveourcats<span>.my</span></p>
+    <p class="tag">An ongoing record · Kuala Lumpur</p>
+  </div>
+
+  <p class="kicker">Investigation · Animal Quarantine · Kuala Lumpur</p>
+
+  <h1>Caged <span id="dh">27</span> days. We paid the fine they demanded. Then&nbsp;— nothing.</h1>
+
+  <p class="deck">
+    Orion and Nova entered Malaysia legally, with every document and every fee in order.
+    They were cleared for release on 30 July. They are still inside. The rule being used
+    to hold them was issued <strong>twelve days after they arrived</strong> — and three days
+    after we paid, the terms changed again.
+  </p>
+
+  <div class="byline">
+    <span><b>By</b> the owners of Orion &amp; Nova</span>
+    <span><b>Kuala Lumpur</b></span>
+    <span class="live"><b>Day</b> <span id="days">27</span> in confinement</span>
+    <span><b>Status</b> Ongoing</span>
+  </div>
+
+  <article>
+
+    <p class="lede">
+      On the night of 15 July 2026, a Malaysia Airlines flight from Jakarta landed at
+      Kuala Lumpur International Airport carrying two domestic cats named Orion and Nova.
+      They travelled with their owner. They travelled with an import permit, veterinary
+      health certificates, current rabies vaccinations, a valid antibody titre test, and
+      a registered relocation agent who had spent seven weeks assembling the paperwork.
+      Shortly after midnight they were handed to officers at Conveyor J and admitted to
+      the animal quarantine station.
+    </p>
+
+    <p>
+      Everything about that arrival was ordinary. Nothing about the twenty-seven days
+      since has been.
+    </p>
+
+    <p>
+      On 19 July the release date was confirmed: <strong>30 July 2026</strong>, at the end of
+      the standard fourteen-day quarantine, collectable any time between 11am and 5pm.
+      A date was set. Arrangements were made around it.
+    </p>
+
+    <p>
+      That date came and went. The cats did not.
+    </p>
+
+    <h2><span class="num">01</span>A regulation that did not exist when they arrived</h2>
+
+    <p>
+      When the owners asked why, they were told a new regulation now applied. On checking
+      that same day, they found it had been issued approximately <strong>two days
+      earlier</strong> — around 28 July.
+    </p>
+
+    <p>
+      Orion and Nova were admitted to quarantine on <strong class="mark">16 July</strong>.
+      The rule now governing their release did not exist for another twelve days. They were
+      already inside the station, already counted, already halfway through a period that had
+      been fixed in advance, when the terms of their confinement were rewritten around them.
+    </p>
+
+    <p>
+      The relocation agent handling the case put the same point in writing:
+      <em>“Ori dan Nova pun landed sebelum aturan ini”</em> — they landed before this rule.
+    </p>
+
+    <p>
+      No transitional arrangement appears to have been made for animals already in
+      quarantine when the change took effect. No written notice of the change was served on
+      the owners. They learned of it by asking why their cats had not come home.
+    </p>
+
+    <h2><span class="num">02</span>“Few agents have the same issues”</h2>
+
+    <p>
+      Through the first days of August there was no decision, only deferral. On 2 August the
+      owners were told, in writing, that the officer <em>“needs to have a discussion,”</em>
+      that an update was being awaited, and that the question would be raised again the
+      following Monday.
+    </p>
+
+    <p>
+      The same message carried a line that reframes this case entirely:
+    </p>
+
+    <p class="pull">“FYI, few Agents have the same issues.”</p>
+
+    <p>
+      Whatever happened here did not happen to two cats alone. Other agents, handling other
+      families' animals, were caught by the same change. This is not the story of one
+      unlucky import. It is the visible edge of a policy applied without transition, to
+      animals already in government custody.
+    </p>
+
+    <h2><span class="num">03</span>A fine, paid the same day</h2>
+
+    <p>
+      On 7 August — day twenty-two — a resolution finally arrived. A compound of
+      <strong>MYR 2,000</strong> was payable. Once paid, release would follow one week later.
+      And, the owners were told explicitly, <strong class="mark">no repeat titre test would
+      be required</strong>.
+    </p>
+
+    <p>
+      They paid that day. The remittance cleared under reference R39656871355. The money
+      was sent within hours of the demand, on the strength of a specific assurance about
+      what it would buy.
+    </p>
+
+    <p>
+      Three days later, that assurance was withdrawn.
+    </p>
+
+    <div class="exhibit">
+      <p class="tag">Exhibit — the reversal, in writing</p>
+      <div class="pair">
+        <div>
+          <p class="when">7 August 2026 · before payment</p>
+          <blockquote>“Owner had asked if titre test is required and I already informed no need.”</blockquote>
+          <p class="attr">The position relayed to the owners, on which the MYR 2,000 was paid the same day.</p>
+        </div>
+        <div class="after">
+          <p class="when">10 August 2026 · after payment</p>
+          <blockquote>“When I ask MAQIS they said no need. Now they need.”</blockquote>
+          <p class="attr">Written verbatim by the person who had put the question directly to MAQIS.</p>
+        </div>
+      </div>
+      <p class="foot">
+        Paid <b>MYR 2,000</b> · 7 August 2026 · remittance <b>R39656871355</b> ·
+        no official receipt issued · no written compound notice naming any offence
+      </p>
+    </div>
+
+    <h2><span class="num">04</span>A test the owners cannot perform</h2>
+
+    <p>
+      The requirement reinstated on 10 August is a repeat rabies neutralising antibody test,
+      by FAVN method, returning a result above 0.5 IU/ml. Forwarded instructions included a
+      further line: that the owner could be asked to obtain it.
+    </p>
+
+    <p>
+      Orion and Nova are inside a government quarantine station. Their owners have no access
+      to them beyond supervised visits. <strong>No owner can draw a blood sample from an
+      animal held in state custody.</strong> Only the station can collect it.
+    </p>
+
+    <p>
+      This matters because of what it does to the clock. Rabies antibody testing at an
+      approved laboratory takes five to ten business days. It is a bounded process with a
+      knowable end date — unless nobody starts it. As of today, the owners have been given
+      no collection date, no laboratory, and no expected result.
+    </p>
+
+    <p class="pull">A test with a ten-day turnaround becomes an indefinite sentence if no one draws the blood.</p>
+
+    <h2><span class="num">05</span>What twenty-seven days costs</h2>
+
+    <p>
+      Boarding charges accrue at MYR 80 per day, running throughout a delay the owners did
+      not cause and cannot end. They have already paid the full cost of the relocation, every
+      government fee, and the MYR 2,000 compound.
+    </p>
+
+    <p>
+      The other cost is not financial. On a visit on 6 August, the owners found both cats in
+      evident distress. <strong>Nova had lost weight and had developed a respiratory
+      sniffle.</strong> Neither animal had been in confinement of any kind before this. One
+      owner has described crying daily. Travel plans made around the 30 July release date
+      have since come and gone.
+    </p>
+
+    <div class="facts">
+      <h3>The case, in figures</h3>
+      <dl>
+        <dt>16 Jul 2026</dt><dd>Admitted to KLIA Animal Quarantine Station</dd>
+        <dt>30 Jul 2026</dt><dd>Confirmed release date — not honoured</dd>
+        <dt>~28 Jul 2026</dt><dd>Approximate date the regulation was issued — after admission</dd>
+        <dt>7 Aug 2026</dt><dd>MYR 2,000 compound demanded and paid same day</dd>
+        <dt>10 Aug 2026</dt><dd>Titre test requirement reinstated</dd>
+        <dt>MYR 80</dt><dd>Boarding charge per day, still accruing</dd>
+        <dt>5–10 days</dt><dd>Standard laboratory turnaround for the test now demanded</dd>
+      </dl>
+    </div>
+
+    <h2><span class="num">06</span>The full chronology</h2>
+
+    <ul class="tl">
+      <li><span class="d">15 Jul</span><p>Arrive KLIA from Jakarta with owner and registered agent.</p></li>
+      <li><span class="d">16 Jul</span><p>Admitted to quarantine shortly after midnight. All documents and fees in order.</p></li>
+      <li><span class="d">19 Jul</span><p>Release confirmed for 30 July, 11am–5pm.</p></li>
+      <li class="hot"><span class="d">30 Jul</span><p>Not released. A regulation issued roughly two days earlier is applied.</p></li>
+      <li><span class="d">2 Aug</span><p>No decision. “Officer needs to have a discussion.” Several other agents affected.</p></li>
+      <li><span class="d">6 Aug</span><p>Visit. Both cats distressed; Nova has lost weight and is sniffling.</p></li>
+      <li class="hot"><span class="d">7 Aug</span><p>MYR 2,000 compound demanded, with release one week later and no titre test. Paid same day.</p></li>
+      <li class="hot"><span class="d">10 Aug</span><p>Titre test requirement reinstated. No release date given.</p></li>
+      <li><span class="d">Today</span><p>Still held. No receipt, no compound notice, no date.</p></li>
+    </ul>
+
+    <h2><span class="num">07</span>What is being asked</h2>
+
+    <p>
+      Not an exemption, and not a waiver of any requirement. Seven things, all requested in
+      writing, none yet received: a firm release date; confirmation of who will collect the
+      blood sample and when; the official receipt and the written compound notice naming the
+      offence; the date the regulation came into force and the basis for applying it
+      retroactively; an explanation of the reversal after payment; a veterinary report on
+      both animals; and confirmation that no boarding charges are levied for any day after
+      30 July — the date they were due to come home.
+    </p>
+
+    <h2><span class="num">08</span>If your animal is caught in this too</h2>
+
+    <p>
+      If you are one of the other owners the 2 August message referred to, these are the
+      official routes. Separate complaints, each properly filed, carry far more weight than
+      volume — and they establish a pattern that a single case cannot.
+    </p>
+
+    <div class="act">
+      <div>
+        <h3>SISPAA — Ministry of Agriculture &amp; Food Security</h3>
+        <p>The federal public complaints system. Produces a tracked reference and a response deadline. The most effective single step.</p>
+        <a href="https://kpkm.spab.gov.my/eApps/system/index.do?aplCode=en">kpkm.spab.gov.my</a>
+      </div>
+      <div>
+        <h3>Department of Veterinary Services — welfare</h3>
+        <p>A separate route under the Animal Welfare Act 2015, for animals whose condition is deteriorating in custody. Evidence can be uploaded.</p>
+        <a href="https://www.dvs.gov.my/index.php/pages/view/3987">dvs.gov.my — complaints</a>
+      </div>
+      <div>
+        <h3>MAQIS — headquarters and the station</h3>
+        <p>Write to both, and ask for every answer in writing. Verbal assurances are what produced this case.</p>
+        <a href="mailto:feedback@maqis.gov.my">feedback@maqis.gov.my</a><br>
+        <a href="mailto:skhklia@dvs.gov.my">skhklia@dvs.gov.my</a>
+        <span class="tel">03-8870 8000 · KLIA station 03-8787 2016</span>
+      </div>
+      <div>
+        <h3>Biro Pengaduan Awam</h3>
+        <p>The Public Complaints Bureau, Prime Minister's Department — independent of the ministry, for when the above have not answered.</p>
+        <a href="https://www.pcb.gov.my/">pcb.gov.my</a>
+        <span class="tel">03-8000 8000</span>
+      </div>
+    </div>
+
+  </article>
+
+  <div class="note">
+    <p>
+      <b>On sourcing.</b> Every date, quotation and figure on this page is drawn from dated
+      correspondence, payment records and photographs held by the owners. Quotations are
+      reproduced verbatim from written messages. Nothing has been reconstructed from memory.
+      The complete file is available to any journalist, to any affected owner, and to any
+      officer who requests it.
+    </p>
+    <p>
+      <b>On scope.</b> This account concerns the conduct of a process and the decisions of a
+      department. It makes no allegation against any individual officer, several of whom have
+      been courteous to the owners throughout. The relocation agents have pursued the matter
+      daily on the owners' behalf.
+    </p>
+    <p>
+      <b>Right of reply.</b> Any correction from MAQIS, DVS or the Ministry of Agriculture
+      and Food Security will be published on this page in full and without edit.
+    </p>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    var start = new Date(Date.UTC(2026, 6, 15, 16, 10)); // 16 Jul 2026 00:10 MYT
+    var els = [document.getElementById('days'), document.getElementById('dh')];
+    function tick() {
+      var d = Math.floor((Date.now() - start.getTime()) / 86400000);
+      if (d < 0) d = 0;
+      els.forEach(function (el) { if (el) el.textContent = d; });
+    }
+    tick();
+    setInterval(tick, 60000);
+  })();
+</script>

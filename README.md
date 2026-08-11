@@ -1,0 +1,87 @@
+# saveourcats.my
+
+The public record of two cats — **Orion and Nova** — held at the KLIA Animal Quarantine
+Station in Malaysia beyond their confirmed release date.
+
+They entered Malaysia legally on **16 July 2026** through a MAQIS-registered agent, with
+every document, vaccination and fee in order. Release was confirmed for **30 July 2026**.
+They are still inside.
+
+---
+
+## The case in short
+
+| | |
+|---|---|
+| Admitted to quarantine | 16 July 2026, KLIA |
+| Release confirmed for | 30 July 2026 — not honoured |
+| Regulation applied | issued ~28 July 2026, **twelve days after admission** |
+| Compound demanded and paid | MYR 2,000 on 7 August 2026 (ref R39656871355) |
+| Assurance given at the time | no repeat titre test required |
+| Position three days later | repeat titre test now required |
+| Boarding charges | MYR 80/day, still accruing |
+| Official receipt for the compound | none issued |
+| Written compound notice naming an offence | none issued |
+
+---
+
+## Editing the site
+
+`src/page.html` is the source. `index.html` is generated — **never edit it by hand.**
+
+```bash
+python3 build.py     # src/page.html -> index.html
+```
+
+The build step wraps the source in a full HTML document and injects the meta
+description, Open Graph and Twitter share cards, theme colours and favicon.
+
+The day counter in the headline and byline is computed in the browser from the
+16 July admission date. It does not need updating.
+
+## Before the site goes public
+
+1. **Add `og-image.jpg`** to the repo root — a real photograph of Orion and Nova,
+   1200×630. This is the image that appears when the link is shared. Without it the
+   share cards render blank.
+2. **Confirm DNS** — see below.
+3. **Flip the repo to public** and enable Pages.
+
+## Hosting
+
+GitHub Pages, custom domain `saveourcats.my` (see `CNAME`).
+
+DNS at the registrar:
+
+```
+A     @    185.199.108.153
+A     @    185.199.109.153
+A     @    185.199.110.153
+A     @    185.199.111.153
+AAAA  @    2606:50c0:8000::153
+AAAA  @    2606:50c0:8001::153
+AAAA  @    2606:50c0:8002::153
+AAAA  @    2606:50c0:8003::153
+CNAME www  austininseoul.github.io
+```
+
+Then: Settings → Pages → Custom domain → `saveourcats.my` → Enforce HTTPS.
+
+---
+
+## Sourcing
+
+Every date, quotation and figure published on this site is drawn from dated
+correspondence, payment records and photographs held by the owners. Quotations are
+reproduced verbatim from written messages. Nothing is reconstructed from memory.
+
+**Evidence files are deliberately not committed to this repository.** They contain
+personal information and are held privately. They are available to journalists, to
+other affected owners, and to any officer who requests them.
+
+## Scope
+
+This account concerns the conduct of a process and the decisions of a department.
+It makes no allegation against any individual officer. Any correction from MAQIS,
+DVS or the Ministry of Agriculture and Food Security will be published in full and
+without edit.
