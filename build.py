@@ -27,7 +27,7 @@ DESC = (
     "and fee in order. They were cleared for release on 30 July. They are still held "
     "at KLIA quarantine, under a regulation issued twelve days after they arrived."
 )
-SHARE_TITLE = "Caged 27 Days. We Paid The Fine. Then…Nothing."
+SHARE_TITLE = "Save Our Cats From Over 27+ Days Of Captivity. No Answer From Authorities."
 SHARE_DESC = (
     "Two cats cleared every requirement to enter Malaysia. They are still locked in "
     "quarantine at KLIA — under a rule issued after they arrived."
