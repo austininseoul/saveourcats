@@ -9,9 +9,14 @@
     --ink-faint:  #85858F;
     --rule:       #DEDBD4;
     --rule-hard:  #16161A;
-    --alarm:      #A81E13;
-    --mark:       #F5E27A;
-    --mark-soft:  rgba(245, 226, 122, 0.42);
+
+    /* Yellow accent, two tiers — bright yellow cannot carry text on white,
+       so blocks and marks take the bright value and text takes the amber. */
+    --accent:     #FFD400;
+    --alarm:      #7A5200;
+    --accent-wash: rgba(255, 212, 0, 0.20);
+    --mark:       #FFE95C;
+    --mark-soft:  rgba(255, 216, 64, 0.46);
     --doc:        #2C4A57;
 
     --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
@@ -41,6 +46,11 @@
     padding: 1.5rem 0 1rem;
     border-bottom: 3px double var(--rule-hard);
   }
+  .pub .brand { display: flex; align-items: center; gap: 0.65rem; }
+  .pub .brand img {
+    width: 2.5rem; height: 2.5rem; display: block;
+    border-radius: 50%;
+  }
   .pub .name {
     margin: 0; font-family: var(--sans);
     font-size: 1.02rem; font-weight: 700;
@@ -67,8 +77,12 @@
     text-wrap: balance; margin: 0; max-width: 17ch;
   }
   h1 #dh {
-    color: var(--alarm);
+    color: var(--ink);
+    background: var(--accent);
     font-variant-numeric: tabular-nums;
+    padding: 0 0.12em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
   }
   .deck {
     font-family: var(--sans); font-weight: 400;
@@ -86,6 +100,40 @@
   }
   .byline b { color: var(--ink-soft); font-weight: 500; }
   .byline .live { color: var(--alarm); font-weight: 600; }
+
+  /* ── Malay summary ── */
+  .ringkasan {
+    border: 2px solid var(--ink);
+    border-top: 8px solid var(--accent);
+    padding: clamp(1.4rem, 3.5vw, 2rem);
+    margin: 2.75rem 0 0.5rem;
+    max-width: 44rem;
+  }
+  .ringkasan .hd {
+    font-family: var(--mono); font-size: 0.7rem;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-faint); margin: 0 0 1rem;
+  }
+  .ringkasan .lead {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+    line-height: 1.35; margin: 0 0 1.25rem; max-width: 38ch;
+  }
+  .ringkasan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.7rem; }
+  .ringkasan li {
+    font-family: var(--sans); font-size: 0.95rem; line-height: 1.55;
+    padding-left: 1.5rem; position: relative; max-width: 54ch;
+  }
+  .ringkasan li::before {
+    content: ""; position: absolute; left: 0; top: 0.6em;
+    width: 0.6rem; height: 0.6rem; background: var(--accent);
+  }
+  .ringkasan .kicker-my {
+    margin: 1.4rem 0 0; padding-top: 1.1rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--serif); font-weight: 700;
+    font-size: 1.02rem; max-width: 46ch;
+  }
 
   /* ── body ── */
   article { padding: clamp(2rem, 5vw, 3rem) 0 0; }
@@ -106,7 +154,7 @@
     color: var(--alarm); margin-bottom: 0.5rem; font-weight: 600;
   }
   strong { font-weight: 700; }
-  .mark { background: var(--mark-soft); box-shadow: 0 0 0 2px var(--mark-soft); }
+  .mark { background: var(--mark-soft); box-shadow: 0 0 0 3px var(--mark-soft); }
 
   /* ── exhibit: the documentary evidence ── */
   .exhibit {
@@ -156,7 +204,7 @@
     font-family: var(--sans); font-size: 0.85rem;
     line-height: 1.5; color: var(--ink-faint);
     margin-top: 0.85rem; max-width: 46ch;
-    padding-left: 0.9rem; border-left: 2px solid var(--alarm);
+    padding-left: 0.9rem; border-left: 4px solid var(--accent);
   }
   figcaption b { color: var(--ink-soft); font-weight: 600; }
   figcaption .stamp {
@@ -169,7 +217,7 @@
   /* ── pull quote ── */
   .pull {
     margin: 2.5rem 0; padding: 0 0 0 1.5rem;
-    border-left: 3px solid var(--alarm);
+    border-left: 5px solid var(--accent);
     font-size: clamp(1.3rem, 3vw, 1.72rem);
     line-height: 1.32; font-weight: 700;
     letter-spacing: -0.018em; max-width: 30ch;
@@ -213,6 +261,15 @@
   .act { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 2rem 0 0; }
   @media (min-width: 740px) { .act { grid-template-columns: 1fr 1fr; } }
   .act > div { background: var(--paper); padding: clamp(1.3rem, 3vw, 1.75rem); }
+  .act .mark-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-weight: 700;
+    font-size: 0.74rem; letter-spacing: 0.08em;
+    padding: 0.42rem 0.7rem; margin: 0 0 0.9rem;
+    border: 2px solid var(--ink); background: var(--accent);
+    color: var(--ink); text-transform: uppercase;
+  }
+  .act .mark-badge.plain { background: transparent; }
   .act h3 { margin: 0 0 0.45rem; font-family: var(--sans); font-size: 0.95rem; font-weight: 700; }
   .act p { margin: 0 0 0.8rem; font-family: var(--sans); font-size: 0.89rem; color: var(--ink-soft); max-width: 40ch; }
   .act a {
@@ -239,7 +296,10 @@
 <div class="wrap">
 
   <div class="pub">
-    <p class="name">saveourcats<span>.my</span></p>
+    <div class="brand">
+      <img src="img/logo.png" alt="" width="512" height="512">
+      <p class="name">saveourcats<span>.my</span></p>
+    </div>
     <p class="tag">An ongoing record · Kuala Lumpur</p>
   </div>
 
@@ -261,6 +321,32 @@
     <span><b>Status</b> Ongoing</span>
   </div>
 
+  <section class="ringkasan" lang="ms">
+    <p class="hd">Ringkasan · Bahasa Malaysia</p>
+    <p class="lead">
+      Dua ekor kucing, Orion dan Nova, masih ditahan di Stesen Kuarantin Haiwan KLIA
+      sejak 16 Julai 2026.
+    </p>
+    <ul>
+      <li>Mereka dibawa masuk ke Malaysia secara sah melalui ejen berdaftar MAQIS, dengan
+        semua dokumen, vaksinasi dan bayaran lengkap.</li>
+      <li>Tarikh pelepasan telah disahkan kepada kami: <strong>30 Julai 2026</strong>.
+        Mereka tidak dilepaskan.</li>
+      <li>Peraturan yang digunakan untuk menahan mereka dikeluarkan sekitar 28 Julai —
+        <strong>dua belas hari selepas kucing kami sudah berada dalam kuarantin</strong>.</li>
+      <li>Pada 7 Ogos, denda <strong>RM2,000</strong> dikenakan. Kami diberitahu secara
+        jelas bahawa ujian titre tidak diperlukan. Kami membayar pada hari yang sama.</li>
+      <li>Pada 10 Ogos, MAQIS menuntut ujian titre semula — bertentangan dengan apa yang
+        diberitahu tiga hari sebelumnya. Tiada tarikh pelepasan diberikan.</li>
+      <li>Sehingga kini: tiada resit rasmi, tiada notis kompaun bertulis yang menyatakan
+        kesalahan, dan tiada tarikh. Caj penginapan RM80 sehari terus berjalan.</li>
+    </ul>
+    <p class="kicker-my">
+      Kami tidak memohon pengecualian. Kami memohon satu keputusan, sebabnya, dan
+      satu tarikh.
+    </p>
+  </section>
+
   <article>
 
     <p class="lede">
@@ -279,7 +365,7 @@
     </p>
 
     <figure class="portrait">
-      <img src="img/before-the-flight.jpg"
+      <img src="img/before-the-flight.webp"
            alt="Orion and Nova on a bed, each wearing a small t-shirt, the night before their flight to Malaysia.">
       <figcaption>
         <b>Orion and Nova on the night of 10 July</b>, the evening before they were collected
@@ -426,7 +512,7 @@
     </p>
 
     <figure class="portrait">
-      <img src="img/visit-day-22.jpg"
+      <img src="img/visit-day-22.webp"
            alt="One of the cats being held during a supervised visit at the quarantine station on 6 August 2026.">
       <figcaption>
         <b>Day 22, inside the station.</b> Supervised visits are permitted. This was taken
@@ -485,23 +571,27 @@
 
     <div class="act">
       <div>
-        <h3>SISPAA — Ministry of Agriculture &amp; Food Security</h3>
+        <span class="mark-badge">SISPAA</span>
+        <h3>Ministry of Agriculture &amp; Food Security</h3>
         <p>The federal public complaints system. Produces a tracked reference and a response deadline. The most effective single step.</p>
         <a href="https://kpkm.spab.gov.my/eApps/system/index.do?aplCode=en">kpkm.spab.gov.my</a>
       </div>
       <div>
-        <h3>Department of Veterinary Services — welfare</h3>
+        <span class="mark-badge">DVS</span>
+        <h3>Department of Veterinary Services — animal welfare</h3>
         <p>A separate route under the Animal Welfare Act 2015, for animals whose condition is deteriorating in custody. Evidence can be uploaded.</p>
         <a href="https://www.dvs.gov.my/index.php/pages/view/3987">dvs.gov.my — complaints</a>
       </div>
       <div>
-        <h3>MAQIS — headquarters and the station</h3>
+        <span class="mark-badge">MAQIS</span>
+        <h3>Headquarters, and the KLIA station</h3>
         <p>Write to both, and ask for every answer in writing. Verbal assurances are what produced this case.</p>
         <a href="mailto:feedback@maqis.gov.my">feedback@maqis.gov.my</a><br>
         <a href="mailto:skhklia@dvs.gov.my">skhklia@dvs.gov.my</a>
         <span class="tel">03-8870 8000 · KLIA station 03-8787 2016</span>
       </div>
       <div>
+        <span class="mark-badge plain">BPA</span>
         <h3>Biro Pengaduan Awam</h3>
         <p>The Public Complaints Bureau, Prime Minister's Department — independent of the ministry, for when the above have not answered.</p>
         <a href="https://www.pcb.gov.my/">pcb.gov.my</a>

@@ -85,3 +85,22 @@ This account concerns the conduct of a process and the decisions of a department
 It makes no allegation against any individual officer. Any correction from MAQIS,
 DVS or the Ministry of Agriculture and Food Security will be published in full and
 without edit.
+
+---
+
+## Share kit
+
+`share/` holds ready-to-post graphics at platform dimensions. Generated from
+`src/cards.html` — edit that, re-render, replace.
+
+| File | Size | Use |
+|---|---|---|
+| `card-1-hook.jpg` | 1080×1350 | Instagram / Threads — the opener, with the photo |
+| `card-2-quotes.jpg` | 1080×1350 | The documented reversal, both quotes side by side |
+| `card-3-numbers.jpg` | 1080×1080 | Square — the case in five figures |
+| `card-4-malay.jpg` | 1080×1350 | Bahasa Malaysia version |
+| `og-image.jpg` | 1200×630 | Link preview card (referenced by index.html) |
+
+Rendering is done by loading `src/cards.html?only=<id>` in a browser, printing to
+PDF at the exact pixel dimensions, then downsampling from 2× for crisp text.
+Screenshot capture was unreliable at these sizes; PDF is exact.

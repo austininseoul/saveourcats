@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<style>
+  @page { margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #FBFAF8; --ink: #16161A; --ink-soft: #4C4C55; --ink-faint: #85858F;
+    --accent: #FFD400; --amber: #7A5200; --rule: #DEDBD4;
+    --serif: Georgia, 'Iowan Old Style', Palatino, serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  body { background: #555; font-family: var(--sans); }
+  body.solo { background: var(--paper); width: 1080px; }
+  body.solo .card { margin: 0 !important; }
+
+  .card {
+    width: 1080px; height: 1350px;
+    background: var(--paper); color: var(--ink);
+    padding: 80px 78px;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .card.sq { height: 1080px; }
+  .card.og { width: 1200px; height: 630px; padding: 56px 64px; }
+  .card.og h1 { font-size: 64px; margin-top: 18px; }
+  .card.og .kick { margin-top: 28px; font-size: 18px; }
+  .card.og .top img { width: 60px; height: 60px; }
+  .card.og .top .wm { font-size: 26px; }
+  .card.og .sub { font-size: 26px; margin-top: 20px; max-width: 34ch; }
+  .card.og .foot { padding-top: 20px; }
+  .card.og .foot .cta { font-size: 24px; }
+  .card.og .foot .url { font-size: 24px; }
+  .card + .card { margin-top: 40px; }
+
+  .top { display: flex; align-items: center; gap: 20px; }
+  .top img { width: 76px; height: 76px; border-radius: 50%; display: block; }
+  .top .wm { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
+  .top .wm span { color: var(--amber); }
+
+  .kick {
+    font-family: var(--mono); font-size: 21px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--amber); margin-top: 54px;
+  }
+
+  h1 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: 86px; line-height: 1.0; letter-spacing: -0.032em;
+    margin-top: 26px;
+  }
+  h1 mark { background: var(--accent); color: var(--ink); padding: 0 10px; }
+  .sq h1 { font-size: 78px; }
+
+  .sub {
+    font-size: 30px; line-height: 1.4; color: var(--ink-soft);
+    margin-top: 30px; max-width: 26ch;
+  }
+  .sub b { color: var(--ink); font-weight: 700; }
+
+  .spacer { flex: 1; }
+
+  .quotes { display: grid; gap: 30px; margin-top: 42px; }
+  .q { border-left: 10px solid var(--accent); padding-left: 30px; }
+  .q .w { font-family: var(--mono); font-size: 20px; color: var(--ink-faint); letter-spacing: 0.06em; }
+  .q p { font-family: var(--serif); font-weight: 700; font-size: 39px; line-height: 1.26; margin-top: 12px; }
+  .q.hot p { color: var(--amber); }
+
+  .facts { display: grid; gap: 26px; margin-top: 46px; }
+  .fact { display: flex; align-items: baseline; gap: 26px; }
+  .fact .n {
+    font-family: var(--mono); font-weight: 700; font-size: 46px;
+    color: var(--ink); background: var(--accent); padding: 4px 14px;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .fact .t { font-size: 31px; line-height: 1.35; color: var(--ink-soft); }
+
+  .foot {
+    border-top: 4px solid var(--ink); padding-top: 30px;
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
+  }
+  .foot .cta { font-size: 32px; font-weight: 800; letter-spacing: -0.015em; max-width: 15ch; line-height: 1.2; }
+  .foot .url { font-family: var(--mono); font-size: 27px; font-weight: 700; color: var(--amber); white-space: nowrap; }
+
+  .photo { margin-top: 34px; border: 3px solid var(--ink); overflow: hidden; height: 390px; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cap { font-family: var(--mono); font-size: 20px; color: var(--ink-faint); margin-top: 16px; letter-spacing: 0.04em; }
+</style></head>
+<body>
+
+<!-- ─────────── CARD 1 · the hook (portrait 1080×1350) ─────────── -->
+<div class="card" id="c1">
+  <div class="top">
+    <img src="saveourcats/img/logo.png" alt="">
+    <p class="wm">saveourcats<span>.my</span></p>
+  </div>
+
+  <p class="kick">Kuala Lumpur · KLIA Quarantine</p>
+  <h1>Caged <mark>27</mark> days. We paid the fine. Then&nbsp;— nothing.</h1>
+  <p class="sub">
+    Orion and Nova entered Malaysia <b>legally</b>, with every document and every fee in order.
+    They were cleared for release on <b>30 July</b>. They are still inside.
+  </p>
+
+  <div class="photo">
+    <img src="saveourcats/img/before-the-flight.jpg" alt="">
+  </div>
+  <p class="cap">The night before they flew · 10 July 2026</p>
+
+  <div class="spacer"></div>
+  <div class="foot">
+    <p class="cta">Read the full record →</p>
+    <p class="url">saveourcats.my</p>
+  </div>
+</div>
+
+<!-- ─────────── CARD 2 · the contradiction (portrait) ─────────── -->
+<div class="card" id="c2">
+  <div class="top">
+    <img src="saveourcats/img/logo.png" alt="">
+    <p class="wm">saveourcats<span>.my</span></p>
+  </div>
+
+  <p class="kick">What MAQIS told us</p>
+  <h1>They said <mark>no test</mark> was needed. We paid. Then they changed it.</h1>
+
+  <div class="quotes">
+    <div class="q">
+      <p class="w">7 AUGUST — BEFORE WE PAID RM2,000</p>
+      <p>“Owner had asked if titre test is required and I already informed no need.”</p>
+    </div>
+    <div class="q hot">
+      <p class="w">10 AUGUST — AFTER WE PAID</p>
+      <p>“When I ask MAQIS they said no need. Now they need.”</p>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+  <div class="foot">
+    <p class="cta">Both quotes are documented.</p>
+    <p class="url">saveourcats.my</p>
+  </div>
+</div>
+
+<!-- ─────────── CARD 3 · the facts (square 1080×1080) ─────────── -->
+<div class="card sq" id="c3">
+  <div class="top">
+    <img src="saveourcats/img/logo.png" alt="">
+    <p class="wm">saveourcats<span>.my</span></p>
+  </div>
+
+  <p class="kick">The case in numbers</p>
+
+  <div class="facts">
+    <div class="fact"><span class="n">27</span><span class="t">days our cats have been caged at KLIA</span></div>
+    <div class="fact"><span class="n">13</span><span class="t">days past the release date we were given</span></div>
+    <div class="fact"><span class="n">12</span><span class="t">days <b>after</b> they arrived, the rule was issued</span></div>
+    <div class="fact"><span class="n">RM2,000</span><span class="t">fine paid — then the terms changed</span></div>
+    <div class="fact"><span class="n">RM80</span><span class="t">charged every day they stay inside</span></div>
+  </div>
+
+  <div class="spacer"></div>
+  <div class="foot">
+    <p class="cta">We are asking for one date.</p>
+    <p class="url">saveourcats.my</p>
+  </div>
+</div>
+
+<!-- ─────────── CARD 4 · Bahasa Malaysia (portrait) ─────────── -->
+<div class="card" id="c4" lang="ms">
+  <div class="top">
+    <img src="saveourcats/img/logo.png" alt="">
+    <p class="wm">saveourcats<span>.my</span></p>
+  </div>
+
+  <p class="kick">Kuarantin KLIA · Bahasa Malaysia</p>
+  <h1>Kucing kami ditahan <mark>27</mark> hari. Kami dah bayar. Masih tiada tarikh.</h1>
+  <p class="sub">
+    Orion dan Nova masuk ke Malaysia <b>secara sah</b> — dokumen lengkap, bayaran lengkap.
+    Tarikh pelepasan disahkan <b>30 Julai</b>. Mereka masih di dalam.
+  </p>
+
+  <div class="quotes">
+    <div class="q hot">
+      <p class="w">PERATURAN DIKELUARKAN 12 HARI SELEPAS MEREKA TIBA</p>
+      <p>Denda RM2,000 dibayar. Kemudian syarat bertukar lagi.</p>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+  <div class="foot">
+    <p class="cta">Baca rekod penuh →</p>
+    <p class="url">saveourcats.my</p>
+  </div>
+</div>
+
+<div class="card og" id="og">
+  <div class="top"><img src="saveourcats/img/logo.png" alt=""><p class="wm">saveourcats<span>.my</span></p></div>
+  <p class="kick">Kuala Lumpur · KLIA Quarantine</p>
+  <h1>Caged <mark>27</mark> days. We paid the fine. Then — nothing.</h1>
+  <p class="sub">Orion and Nova entered Malaysia legally, with every document and fee in order. They were cleared for release on 30 July. They are still inside.</p>
+  <div class="spacer"></div>
+  <div class="foot"><p class="cta">The full documented record →</p><p class="url">saveourcats.my</p></div>
+</div>
+
+<script>
+  var only = new URLSearchParams(location.search).get('only');
+  if (only) {
+    document.body.classList.add('solo');
+    document.querySelectorAll('.card').forEach(function (c) {
+      if (c.id !== only) c.remove();
+    });
+  }
+</script>
+</body></html>
