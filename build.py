@@ -5,14 +5,13 @@ Build the site from src/page.html.
     python3 build.py
 
 Outputs:
-  index.html     standalone page for GitHub Pages (full document, images inlined)
-  artifact.html  same page in claude.ai artifact format (no doctype/head wrapper)
+  index.html     for GitHub Pages — relative asset URLs, so fonts and images
+                 are cached by the browser across visits
+  artifact.html  for claude.ai — every asset inlined as a data URI, because
+                 the artifact CSP blocks external requests and relative paths
+                 do not resolve there
 
-src/page.html is the editable source. It references images with ordinary relative
-paths (img/foo.jpg); the build inlines them as data URIs so the published page is
-self-contained and renders identically wherever it is hosted.
-
-Never hand-edit index.html or artifact.html.
+src/page.html is the editable source. Never hand-edit either output.
 """
 import base64
 import mimetypes
@@ -39,22 +38,40 @@ if not SRC.exists():
 
 src = SRC.read_text()
 
+ASSET_RE = re.compile(r"""(?:src="|url\(')((?:img|fonts)/[^"')]+)""")
 
-def inline_images(html: str) -> str:
-    """Replace src="img/..." with a data: URI."""
-    def sub(m):
-        path = ROOT / m.group(1)
+
+def inline_assets(html: str) -> str:
+    """Replace img/ and fonts/ references with data: URIs."""
+    total = 0
+
+    def datauri(rel: str) -> str | None:
+        nonlocal total
+        path = ROOT / rel
         if not path.exists():
-            print(f"  ! missing image, left as-is: {m.group(1)}")
-            return m.group(0)
-        mime = mimetypes.guess_type(path.name)[0] or "image/jpeg"
+            print(f"  ! missing asset: {rel}")
+            return None
+        mime = mimetypes.guess_type(path.name)[0] or (
+            "font/woff2" if path.suffix == ".woff2" else "application/octet-stream"
+        )
         b64 = base64.b64encode(path.read_bytes()).decode()
-        print(f"  inlined {m.group(1)}  ({len(b64)//1024} KB base64)")
-        return f'src="data:{mime};base64,{b64}"'
-    return re.sub(r'src="(img/[^"]+)"', sub, html)
+        total += len(b64)
+        print(f"  inlined {rel:<34} {len(b64)//1024:>4} KB")
+        return f"data:{mime};base64,{b64}"
 
+    def sub_src(m):
+        uri = datauri(m.group(1))
+        return f'src="{uri}"' if uri else m.group(0)
 
-src = inline_images(src)
+    def sub_url(m):
+        uri = datauri(m.group(1))
+        return f"url('{uri}')" if uri else m.group(0)
+
+    html = re.sub(r'src="((?:img|fonts)/[^"]+)"', sub_src, html)
+    html = re.sub(r"url\('((?:img|fonts)/[^']+)'\)", sub_url, html)
+    print(f"  ── inlined total: {total//1024} KB base64")
+    return html
+
 
 try:
     t0 = src.index("<title>")
@@ -65,10 +82,11 @@ except ValueError:
 title_tag = src[t0:t1]
 body = src[t1:].lstrip()
 
-# ── artifact format: title + content, no document wrapper ──
-(ROOT / "artifact.html").write_text(title_tag + "\n\n" + body)
+# ── artifact: everything inlined ──
+print("building artifact.html")
+(ROOT / "artifact.html").write_text(title_tag + "\n\n" + inline_assets(body))
 
-# ── standalone document for GitHub Pages ──
+# ── standalone: relative URLs, preload the two faces above the fold ──
 doc = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -92,7 +110,12 @@ doc = f"""<!doctype html>
 <meta name="twitter:image" content="https://saveourcats.my/og-image.jpg">
 
 <meta name="theme-color" content="#FBFAF8">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128008;</text></svg>">
+<link rel="icon" href="img/favicon.png" sizes="64x64">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+<link rel="preload" as="font" type="font/woff2" href="fonts/editorial-ultrabold.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/editorial-regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/montreal-regular.woff2" crossorigin>
 
 <style>
   *, *::before, *::after {{ box-sizing: border-box; }}
@@ -108,5 +131,6 @@ doc = f"""<!doctype html>
 """
 (ROOT / "index.html").write_text(doc)
 
-print(f"\n  index.html     {len(doc):,} bytes")
-print(f"  artifact.html  {len(title_tag) + len(body):,} bytes")
+print(f"\nbuilding index.html")
+print(f"  index.html     {len(doc):,} bytes (assets served separately)")
+print(f"  artifact.html  {(ROOT / 'artifact.html').stat().st_size:,} bytes (all inlined)")

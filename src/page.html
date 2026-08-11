@@ -1,6 +1,21 @@
 <title>Caged 27 days. We paid. Then nothing. — saveourcats.my</title>
 
 <style>
+  /* PP Editorial Old & PP Neue Montreal — Pangram Pangram.
+     Subset to Latin; see fonts/ for the woff2 files. */
+  @font-face { font-family: 'Editorial'; src: url('fonts/editorial-regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Editorial'; src: url('fonts/editorial-italic.woff2') format('woff2');
+    font-weight: 400; font-style: italic; font-display: swap; }
+  @font-face { font-family: 'Editorial'; src: url('fonts/editorial-ultrabold.woff2') format('woff2');
+    font-weight: 800; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Montreal'; src: url('fonts/montreal-regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Montreal'; src: url('fonts/montreal-semibold.woff2') format('woff2');
+    font-weight: 600; font-style: normal; font-display: swap; }
+</style>
+
+<style>
   :root {
     --paper:      #FBFAF8;
     --paper-2:    #F1EFEA;
@@ -19,8 +34,8 @@
     --mark-soft:  rgba(255, 216, 64, 0.46);
     --doc:        #2C4A57;
 
-    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, serif;
-    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --serif: 'Editorial', Georgia, 'Iowan Old Style', serif;
+    --sans: 'Montreal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
 
     --col: 38rem;
@@ -33,7 +48,7 @@
 
   body {
     background: var(--paper); color: var(--ink);
-    font-family: var(--serif); font-size: 18px; line-height: 1.7;
+    font-family: var(--serif); font-size: 19.5px; line-height: 1.62;
     -webkit-font-smoothing: antialiased;
   }
   .wrap { max-width: 72rem; margin: 0 auto; padding: 0 var(--gutter); }
@@ -71,7 +86,7 @@
     margin: clamp(2rem, 5vw, 3.25rem) 0 1.1rem;
   }
   h1 {
-    font-family: var(--serif); font-weight: 700;
+    font-family: var(--serif); font-weight: 800;
     font-size: clamp(2.45rem, 7.2vw, 5.1rem);
     line-height: 0.99; letter-spacing: -0.032em;
     text-wrap: balance; margin: 0; max-width: 17ch;
@@ -115,7 +130,7 @@
     color: var(--ink-faint); margin: 0 0 1rem;
   }
   .ringkasan .lead {
-    font-family: var(--serif); font-weight: 700;
+    font-family: var(--serif); font-weight: 800;
     font-size: clamp(1.1rem, 2.4vw, 1.35rem);
     line-height: 1.35; margin: 0 0 1.25rem; max-width: 38ch;
   }
@@ -131,7 +146,7 @@
   .ringkasan .kicker-my {
     margin: 1.4rem 0 0; padding-top: 1.1rem;
     border-top: 1px solid var(--rule);
-    font-family: var(--serif); font-weight: 700;
+    font-family: var(--serif); font-weight: 800;
     font-size: 1.02rem; max-width: 46ch;
   }
 
@@ -177,7 +192,7 @@
   }
   .pair blockquote {
     margin: 0; font-size: clamp(1.18rem, 2.6vw, 1.5rem);
-    line-height: 1.36; letter-spacing: -0.012em; font-weight: 700;
+    line-height: 1.32; letter-spacing: -0.012em; font-weight: 800;
   }
   .pair .after blockquote { color: var(--alarm); }
   .pair .attr {
@@ -219,7 +234,7 @@
     margin: 2.5rem 0; padding: 0 0 0 1.5rem;
     border-left: 5px solid var(--accent);
     font-size: clamp(1.3rem, 3vw, 1.72rem);
-    line-height: 1.32; font-weight: 700;
+    line-height: 1.24; font-weight: 800;
     letter-spacing: -0.018em; max-width: 30ch;
   }
 

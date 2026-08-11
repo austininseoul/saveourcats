@@ -104,3 +104,29 @@ without edit.
 Rendering is done by loading `src/cards.html?only=<id>` in a browser, printing to
 PDF at the exact pixel dimensions, then downsampling from 2× for crisp text.
 Screenshot capture was unreliable at these sizes; PDF is exact.
+
+---
+
+## Typefaces
+
+**PP Editorial Old** (display + article body) and **PP Neue Montreal** (deck, headings,
+captions) by [Pangram Pangram](https://pangrampangram.com). System monospace is used for
+dates, references and agency marks — a deliberate register shift for anything evidentiary.
+
+Both are the **Free For Personal Use** cuts. This is a non-commercial advocacy site, but if
+it ever carries donations, sponsorship, or anything commercial, the licence must be upgraded
+first. The EULAs are in the original font pack.
+
+`fonts/` holds Latin-subset WOFF2 builds — 92 KB for five faces. Regenerate with:
+
+```bash
+bash tools-make-fonts.sh    # needs fonttools + brotli, paths at the top of the file
+```
+
+## Asset strategy
+
+- `index.html` references `img/` and `fonts/` normally, so browsers cache them between visits
+- `artifact.html` inlines every asset as a data URI, because the claude.ai artifact CSP
+  blocks external requests and relative paths do not resolve there
+
+Both are produced by the same `build.py` run.
