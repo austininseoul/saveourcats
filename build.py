@@ -27,7 +27,7 @@ DESC = (
     "and fee in order. They were cleared for release on 30 July. They are still held "
     "at KLIA quarantine, under a regulation issued twelve days after they arrived."
 )
-SHARE_TITLE = "Caged 27 days. We paid the fine. Then nothing."
+SHARE_TITLE = "Caged 27 Days. We Paid The Fine. Then…Nothing."
 SHARE_DESC = (
     "Two cats cleared every requirement to enter Malaysia. They are still locked in "
     "quarantine at KLIA — under a rule issued after they arrived."
@@ -113,7 +113,7 @@ doc = f"""<!doctype html>
 <link rel="icon" href="img/favicon.png" sizes="64x64">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
-<link rel="preload" as="font" type="font/woff2" href="fonts/editorial-ultrabold.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" 
 <link rel="preload" as="font" type="font/woff2" href="fonts/editorial-regular.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/montreal-regular.woff2" crossorigin>
 

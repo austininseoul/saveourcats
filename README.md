@@ -109,15 +109,18 @@ Screenshot capture was unreliable at these sizes; PDF is exact.
 
 ## Typefaces
 
-**PP Editorial Old** (display + article body) and **PP Neue Montreal** (deck, headings,
-captions) by [Pangram Pangram](https://pangrampangram.com). System monospace is used for
-dates, references and agency marks — a deliberate register shift for anything evidentiary.
+**PP Editorial Old Regular** sets the headlines, pull quotes and the documentary quotations —
+at display sizes its high contrast carries the page without needing weight. Everything else,
+including all body copy, labels and dates, is **PP Neue Montreal**. No monospace anywhere;
+labels get their character from case, tracking and weight instead.
+
+Both by [Pangram Pangram](https://pangrampangram.com).
 
 Both are the **Free For Personal Use** cuts. This is a non-commercial advocacy site, but if
 it ever carries donations, sponsorship, or anything commercial, the licence must be upgraded
 first. The EULAs are in the original font pack.
 
-`fonts/` holds Latin-subset WOFF2 builds — 92 KB for five faces. Regenerate with:
+`fonts/` holds Latin-subset WOFF2 builds — 68 KB for four faces. Regenerate with:
 
 ```bash
 bash tools-make-fonts.sh    # needs fonttools + brotli, paths at the top of the file
