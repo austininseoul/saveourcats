@@ -170,3 +170,43 @@ The markdown parser lives in `blog.py` and has no dependencies — it covers hea
 paragraphs, lists, blockquotes, rules, images, links and inline emphasis. Page templates
 are in `blogpages.py` and pull their CSS straight out of `src/page.html`, so the blog can
 never drift from the main article's design.
+
+---
+
+## Bilingual — English at `/`, Malay at `/ms/`
+
+The Malay edition is **written, not machine-translated.** A translation widget would have
+produced Malay that reads badly to exactly the audience that matters most here, so the
+translations in `src/ms.json` are real ones.
+
+### How it works
+
+Every translatable element in `src/page.html` is keyed by a **short hash of its own English
+content**. `src/ms.json` maps those hashes to Malay. The build swaps matching elements.
+
+The consequence worth understanding:
+
+> **Edit an English sentence and its hash changes, so its translation is reported missing.**
+
+That is deliberate. A stale Malay translation can never silently survive an English edit.
+Run the build, read the coverage report, update `src/ms.json`. Anything untranslated falls
+back to English rather than breaking the page.
+
+```
+$ python3 build.py
+  i18n: 78/78 strings translated (100%)
+```
+
+When strings are missing, the build writes a ready-to-fill stub to `src/ms.todo.json`.
+
+### SEO
+
+Both editions carry `hreflang` pointing at each other plus `x-default`, `og:locale`
+(`en_GB` / `ms_MY`), language-specific JSON-LD, and both appear in `sitemap.xml` with
+`xhtml:link` alternates. Google will serve the right one by user language.
+
+### Not yet translated
+
+Blog dispatches are English-only. To translate one, the same pattern applies — but the
+toggle on a post currently links to the homepage of the other language, not a translated
+post. Worth doing properly if the dispatches become a major channel.

@@ -23,9 +23,40 @@ import html as _html
 
 import blog as blogmod
 import blogpages
+import i18n
 
 ROOT = pathlib.Path(__file__).parent
 TODAY = datetime.date.today().isoformat()
+LANG_CSS = """
+  .langsw {
+    display: inline-flex; border: 2px solid var(--ink);
+    font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    overflow: hidden; align-self: center;
+  }
+  .langsw a { padding: 0.32rem 0.6rem; text-decoration: none; color: var(--ink); }
+  .langsw a[aria-current="true"] { background: var(--accent); }
+  .langsw a:not([aria-current="true"]):hover { background: var(--mark-soft); }
+  .pub { align-items: center; }
+  .pub-right { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; }
+"""
+
+def switcher(active, home):
+    en = ' aria-current="true"' if active == "en" else ""
+    ms = ' aria-current="true"' if active == "ms" else ""
+    return (f'<span class="langsw"><a href="{home}"{en} lang="en" hreflang="en">EN</a>'
+            f'<a href="{home}ms/" {ms} lang="ms" hreflang="ms">BM</a></span>')
+
+def with_toggle(body, active):
+    old = '<p class="tag">An ongoing record · Kuala Lumpur</p>'
+    if old not in body:
+        import re as _re
+        m = _re.search(r'<p class="tag">.*?</p>', body, _re.S)
+        old = m.group(0) if m else None
+    if not old:
+        return body
+    return body.replace(old, f'<div class="pub-right">{old}{switcher(active, "/")}</div>', 1)
+
 BLOG_CSS = blogpages.EXTRA
 SRC = ROOT / "src" / "page.html"
 
@@ -89,22 +120,22 @@ except ValueError:
 title_tag = src[t0:t1]
 body = src[t1:].lstrip()
 
-# ── blog ──────────────────────────────────────────────────────────────
+
+# ── blog (needed before the homepage teaser is injected) ──────────────
 posts = blogmod.load_all()
 n = blogpages.build(posts)
-print(f"  blog: {n} post(s) -> blog/index.html + {n} post page(s)")
+print(f"  blog: {n} post(s)")
 
 if posts:
-    latest = posts[:3]
     cards = "".join(
-        f'''      <a class="dcard" href="/blog/{p["slug"]}/">
-        {'<span class="dcard-img"><img src="' + p["hero"] + '" alt=""></span>' if p.get("hero") else ''}
-        <span class="dcard-d">{p["pretty"]}</span>
-        <span class="dcard-t">{_html.escape(p["title"])}</span>
-        <span class="dcard-s">{_html.escape(p["summary"])}</span>
+        f'''      <a class="dcard" href="/blog/{q["slug"]}/">
+        {'<span class="dcard-img"><img src="' + q["hero"] + '" alt=""></span>' if q.get("hero") else ''}
+        <span class="dcard-d">{q["pretty"]}</span>
+        <span class="dcard-t">{_html.escape(q["title"])}</span>
+        <span class="dcard-s">{_html.escape(q["summary"])}</span>
         <span class="dcard-go">Read the dispatch →</span>
       </a>\n'''
-        for p in latest
+        for q in posts[:3]
     )
     DISPATCHES = f'''
   <section id="dispatches">
@@ -119,111 +150,110 @@ if posts:
     <a class="dispatch-more" href="/blog/">All {len(posts)} dispatches →</a>
   </section>
 '''
-    body = body.replace("  <div class=\"note\">", DISPATCHES + "\n  <div class=\"note\">", 1)
+    body = body.replace('  <div class="note">', DISPATCHES + '\n  <div class="note">', 1)
+
+# ── translate, then add the language switch to each edition ───────────
+ms_body, done, missing = i18n.translate(body, i18n.load_ms())
+i18n.report(done, missing)
+
+en_body = with_toggle(body, "en")
+ms_body = with_toggle(ms_body, "ms")
+
+MS_TITLE = "Selamatkan Kucing Kami — Ditahan di Kuarantin KLIA — saveourcats.my"
+MS_DESC = ("Orion dan Nova masuk ke Malaysia secara sah dengan dokumen dan bayaran lengkap. "
+           "Tarikh pelepasan disahkan 30 Julai. Mereka masih ditahan di Stesen Kuarantin Haiwan "
+           "KLIA, di bawah peraturan yang dikeluarkan dua belas hari selepas mereka tiba.")
+
+ALT = ('<link rel="alternate" hreflang="en" href="https://saveourcats.my/">\n'
+       '<link rel="alternate" hreflang="ms" href="https://saveourcats.my/ms/">\n'
+       '<link rel="alternate" hreflang="x-default" href="https://saveourcats.my/">')
+
+JSONLD = """<script type="application/ld+json">
+{{"@context":"https://schema.org","@type":"NewsArticle",
+"headline":"{t}","description":"{d}",
+"image":["https://saveourcats.my/og-image.jpg"],
+"datePublished":"2026-08-12T00:00:00+08:00","dateModified":"{today}T00:00:00+08:00",
+"inLanguage":"{lang}","isAccessibleForFree":true,
+"author":{{"@type":"Person","name":"The owners of Orion and Nova"}},
+"publisher":{{"@type":"Organization","name":"saveourcats.my","url":"https://saveourcats.my/",
+"logo":{{"@type":"ImageObject","url":"https://saveourcats.my/img/logo.png"}}}},
+"mainEntityOfPage":{{"@type":"WebPage","@id":"{url}"}},
+"contentLocation":{{"@type":"Place","name":"KLIA Animal Quarantine Station",
+"address":{{"@type":"PostalAddress","streetAddress":"Kompleks MAQIS KLIA, Jalan Pekeliling 4",
+"addressLocality":"Sepang","addressRegion":"Selangor","postalCode":"64050","addressCountry":"MY"}}}},
+"about":[{{"@type":"Thing","name":"Animal quarantine"}},
+{{"@type":"GovernmentOrganization","name":"Malaysian Quarantine and Inspection Services Department (MAQIS)"}}]}}
+</script>"""
 
 
-# ── artifact: everything inlined ──
-print("building artifact.html")
-(ROOT / "artifact.html").write_text(title_tag + "\n\n" + inline_assets(body))
-
-# ── standalone: relative URLs, preload the two faces above the fold ──
-doc = f"""<!doctype html>
-<html lang="en">
+def page(lang, title, desc, canonical, body_html):
+    pre = "" if lang == "en" else ".."
+    ld = JSONLD.format(t=_html.escape(title, quote=True), d=_html.escape(desc, quote=True),
+                       today=TODAY, lang=lang, url=canonical)
+    return f"""<!doctype html>
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-{title_tag}
-<meta name="description" content="{DESC}">
-<link rel="canonical" href="https://saveourcats.my/">
-
+<title>{_html.escape(title)}</title>
+<meta name="description" content="{_html.escape(desc, quote=True)}">
+<link rel="canonical" href="{canonical}">
+{ALT}
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="saveourcats.my">
-<meta property="og:url" content="https://saveourcats.my/">
-<meta property="og:title" content="{SHARE_TITLE}">
-<meta property="og:description" content="{SHARE_DESC}">
+<meta property="og:url" content="{canonical}">
+<meta property="og:title" content="{_html.escape(title, quote=True)}">
+<meta property="og:description" content="{_html.escape(desc, quote=True)}">
+<meta property="og:locale" content="{'en_GB' if lang == 'en' else 'ms_MY'}">
 <meta property="og:image" content="https://saveourcats.my/og-image.jpg">
-<meta property="og:image:alt" content="Orion and Nova">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{SHARE_TITLE}">
-<meta name="twitter:description" content="{SHARE_DESC}">
+<meta name="twitter:title" content="{_html.escape(title, quote=True)}">
+<meta name="twitter:description" content="{_html.escape(desc, quote=True)}">
 <meta name="twitter:image" content="https://saveourcats.my/og-image.jpg">
-
 <meta name="theme-color" content="#FBFAF8">
-<link rel="icon" href="img/favicon.png" sizes="64x64">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-
-<link rel="preload" as="font" type="font/woff2" 
-<link rel="preload" as="font" type="font/woff2" href="fonts/editorial-regular.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="fonts/montreal-regular.woff2" crossorigin>
-
+<link rel="icon" href="/img/favicon.png" sizes="64x64">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/editorial-regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/montreal-regular.woff2" crossorigin>
 <style>
   *, *::before, *::after {{ box-sizing: border-box; }}
   html {{ color-scheme: light; }}
   body {{ margin: 0; }}
   img {{ max-width: 100%; height: auto; display: block; }}
 </style>
-<style>{BLOG_CSS}</style>
-
-<script type="application/ld+json">
-{{
-  "@context": "https://schema.org",
-  "@type": "NewsArticle",
-  "headline": "{SHARE_TITLE}",
-  "description": "{SHARE_DESC}",
-  "image": ["https://saveourcats.my/og-image.jpg"],
-  "datePublished": "2026-08-12T00:00:00+08:00",
-  "dateModified": "{TODAY}T00:00:00+08:00",
-  "inLanguage": ["en", "ms"],
-  "isAccessibleForFree": true,
-  "author": {{ "@type": "Person", "name": "The owners of Orion and Nova" }},
-  "publisher": {{
-    "@type": "Organization",
-    "name": "saveourcats.my",
-    "url": "https://saveourcats.my/",
-    "logo": {{ "@type": "ImageObject", "url": "https://saveourcats.my/img/logo.png" }}
-  }},
-  "mainEntityOfPage": {{ "@type": "WebPage", "@id": "https://saveourcats.my/" }},
-  "contentLocation": {{
-    "@type": "Place",
-    "name": "KLIA Animal Quarantine Station",
-    "address": {{
-      "@type": "PostalAddress",
-      "streetAddress": "Kompleks MAQIS KLIA, Jalan Pekeliling 4",
-      "addressLocality": "Sepang",
-      "addressRegion": "Selangor",
-      "postalCode": "64050",
-      "addressCountry": "MY"
-    }}
-  }},
-  "about": [
-    {{ "@type": "Thing", "name": "Animal quarantine" }},
-    {{ "@type": "Thing", "name": "Pet import Malaysia" }},
-    {{ "@type": "GovernmentOrganization", "name": "Malaysian Quarantine and Inspection Services Department (MAQIS)" }}
-  ]
-}}
-</script>
+<style>{BLOG_CSS}{LANG_CSS}</style>
+{ld}
 </head>
 <body>
-{body}
+{body_html}
 </body>
 </html>
 """
-(ROOT / "index.html").write_text(doc)
 
-print(f"\nbuilding index.html")
-print(f"  index.html     {len(doc):,} bytes (assets served separately)")
-print(f"  artifact.html  {(ROOT / 'artifact.html').stat().st_size:,} bytes (all inlined)")
 
-# ── sitemap (regenerated so new dispatches are always included) ───────
-urls = [("https://saveourcats.my/", "daily", "1.0")]
+EN_TITLE = re.sub(r"</?title>", "", title_tag)
+
+(ROOT / "artifact.html").write_text(title_tag + "\n\n" + inline_assets(en_body))
+
+(ROOT / "index.html").write_text(
+    page("en", EN_TITLE, DESC, "https://saveourcats.my/", en_body))
+
+msdir = ROOT / "ms"
+msdir.mkdir(exist_ok=True)
+# asset URLs are already root-absolute, so the Malay page needs no rewriting
+(msdir / "index.html").write_text(
+    page("ms", MS_TITLE, MS_DESC, "https://saveourcats.my/ms/", ms_body))
+
+print(f"  index.html     {(ROOT / 'index.html').stat().st_size:,} bytes  (en)")
+print(f"  ms/index.html  {(msdir / 'index.html').stat().st_size:,} bytes  (ms)")
+print(f"  artifact.html  {(ROOT / 'artifact.html').stat().st_size:,} bytes")
+
+# ── sitemap ───────────────────────────────────────────────────────────
+urls = [("https://saveourcats.my/", "daily", "1.0"),
+        ("https://saveourcats.my/ms/", "daily", "0.9")]
 if posts:
     urls.append(("https://saveourcats.my/blog/", "daily", "0.8"))
-    urls += [(f"https://saveourcats.my/blog/{p['slug']}/", "monthly", "0.7") for p in posts]
-
-def _entry(loc, freq, pri, images=""):
-    return (f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{TODAY}</lastmod>\n"
-            f"    <changefreq>{freq}</changefreq>\n    <priority>{pri}</priority>\n{images}  </url>\n")
+    urls += [(f"https://saveourcats.my/blog/{q['slug']}/", "monthly", "0.7") for q in posts]
 
 IMAGES = """    <image:image>
       <image:loc>https://saveourcats.my/og-image.jpg</image:loc>
@@ -234,17 +264,20 @@ IMAGES = """    <image:image>
       <image:loc>https://saveourcats.my/img/before-the-flight.jpg</image:loc>
       <image:caption>Orion and Nova the night before their flight to Malaysia, 10 July 2026.</image:caption>
     </image:image>
-    <image:image>
-      <image:loc>https://saveourcats.my/img/visit-day-22.jpg</image:loc>
-      <image:caption>A supervised visit at the KLIA quarantine station, 6 August 2026.</image:caption>
-    </image:image>
 """
 
 sm = ['<?xml version="1.0" encoding="UTF-8"?>',
       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+      '        xmlns:xhtml="http://www.w3.org/1999/xhtml"',
       '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
 for i, (loc, freq, pri) in enumerate(urls):
-    sm.append(_entry(loc, freq, pri, IMAGES if i == 0 else "").rstrip("\n"))
+    links = ""
+    if loc in ("https://saveourcats.my/", "https://saveourcats.my/ms/"):
+        links = ('    <xhtml:link rel="alternate" hreflang="en" href="https://saveourcats.my/"/>\n'
+                 '    <xhtml:link rel="alternate" hreflang="ms" href="https://saveourcats.my/ms/"/>\n')
+    sm.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{TODAY}</lastmod>\n"
+              f"    <changefreq>{freq}</changefreq>\n    <priority>{pri}</priority>\n"
+              f"{links}{IMAGES if i == 0 else ''}  </url>")
 sm.append("</urlset>")
 (ROOT / "sitemap.xml").write_text("\n".join(sm) + "\n")
-print(f"  sitemap: {len(urls)} URL(s)")
+print(f"  sitemap: {len(urls)} URL(s), with hreflang pairs")
