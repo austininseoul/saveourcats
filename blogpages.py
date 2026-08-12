@@ -63,7 +63,15 @@ EXTRA = """
   .bl-body li { margin-bottom: 0.5rem; }
   .bl-body hr { border: 0; border-top: 1px solid var(--rule); margin: 2.2rem 0; }
   .bl-body a { color: var(--alarm); }
-  .bl-body img { border: 1px solid var(--rule); margin: 1.8rem 0; }
+  .bl-body p:has(> img) { margin: 1.9rem 0 0; }
+  .bl-body img { border: 1px solid var(--rule); margin: 0; width: 100%; }
+  /* an italic line straight after an image reads as its caption + credit */
+  .bl-body p:has(> img) + p em {
+    display: block; font-style: normal;
+    font-size: 0.8rem; color: var(--ink-faint);
+    padding-left: 0.9rem; border-left: 4px solid var(--accent);
+  }
+  .bl-body p:has(> img) + p { margin: 0.85rem 0 1.9rem; }
 
   .bl-hero { margin: 1.9rem 0 0; }
   .bl-hero img { width: 100%; border: 1px solid var(--rule); max-height: 30rem; object-fit: cover; }

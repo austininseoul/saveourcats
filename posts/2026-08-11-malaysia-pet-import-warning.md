@@ -100,6 +100,10 @@ officers to extract payments, and states that legitimate payments go through off
 If you are asked to pay into any account, ask what it is for, ask for the notice, and ask for the
 receipt. A legitimate charge survives all three questions.
 
+![An airport departure gate seen through the terminal window](/img/airport-gate.webp)
+
+*Illustration only — not Orion and Nova, and not KLIA. Photo via Unsplash, free licence.*
+
 ## A checklist before you book
 
 - Confirm the **current** quarantine period and station status directly with MAQIS, not from a blog — including this one
