@@ -65,12 +65,21 @@ EXTRA = """
   .bl-body a { color: var(--alarm); }
   .bl-body img { border: 1px solid var(--rule); margin: 1.8rem 0; }
 
+  .bl-hero { margin: 1.9rem 0 0; }
+  .bl-hero img { width: 100%; border: 1px solid var(--rule); max-height: 30rem; object-fit: cover; }
+
   /* archive list */
   .bl-list { list-style: none; margin: 2rem 0 0; padding: 0; }
   .bl-list li { border-top: 1px solid var(--rule); }
   .bl-list li:last-child { border-bottom: 1px solid var(--rule); }
   .bl-list a {
-    display: block; padding: 1.5rem 0; text-decoration: none; color: inherit;
+    display: grid; gap: 1.5rem; align-items: start;
+    padding: 1.5rem 0; text-decoration: none; color: inherit;
+  }
+  @media (min-width: 680px) { .bl-list a { grid-template-columns: 1fr 13rem; } }
+  .bl-list-img img {
+    width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+    border: 1px solid var(--rule);
   }
   .bl-list a:hover .bl-list-t, .bl-list a:focus-visible .bl-list-t {
     background: var(--mark-soft);
@@ -92,6 +101,39 @@ EXTRA = """
   }
 
   /* homepage teaser */
+  .dgrid {
+    display: grid; gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin-top: 2rem;
+  }
+  @media (min-width: 620px) { .dgrid { grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); } }
+  .dcard {
+    display: flex; flex-direction: column;
+    background: var(--paper); padding: 0 0 1.4rem;
+    text-decoration: none; color: inherit;
+  }
+  .dcard-img { display: block; }
+  .dcard-img img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+  .dcard-d {
+    font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+    padding: 1.35rem 1.4rem 0;
+  }
+  .dcard-t {
+    font-family: var(--serif); font-size: 1.28rem; line-height: 1.22;
+    letter-spacing: -0.012em; padding: 0.45rem 1.4rem 0;
+  }
+  .dcard-s {
+    font-family: var(--sans); font-size: 0.9rem; line-height: 1.5;
+    color: var(--ink-soft); padding: 0.6rem 1.4rem 0; flex: 1;
+  }
+  .dcard-go {
+    font-family: var(--sans); font-size: 0.82rem; font-weight: 600;
+    color: var(--alarm); padding: 1.1rem 1.4rem 0;
+  }
+  .dcard:hover .dcard-t, .dcard:focus-visible .dcard-t {
+    background: var(--mark-soft); box-shadow: 0 0 0 3px var(--mark-soft);
+  }
+
   .dispatch-lead { font-family: var(--sans); font-size: 1.02rem; color: var(--ink-soft); max-width: 46ch; }
   .dispatch-more {
     display: inline-block; margin-top: 1.4rem;
@@ -168,9 +210,12 @@ def build(posts):
     # ── archive ──
     items = "".join(
         f"""    <li><a href="/blog/{p['slug']}/">
-      <span class="bl-list-d">{p['pretty']}</span>
-      <p class="bl-list-t">{html.escape(p['title'])}</p>
-      <p class="bl-list-s">{html.escape(p['summary'])}</p>
+      <div class="bl-list-txt">
+        <span class="bl-list-d">{p['pretty']}</span>
+        <p class="bl-list-t">{html.escape(p['title'])}</p>
+        <p class="bl-list-s">{html.escape(p['summary'])}</p>
+      </div>
+      {'<div class="bl-list-img"><img src="' + p['hero'] + '" alt=""></div>' if p.get('hero') else ''}
     </a></li>\n"""
         for p in posts
     )
@@ -219,6 +264,9 @@ def build(posts):
 "isPartOf":{{"@type":"Blog","name":"Dispatches","url":"https://saveourcats.my/blog/"}}}}
 </script>""".replace("'", '"')
 
+        hero = (f'<figure class="bl-hero"><img src="{p["hero"]}" alt="{html.escape(p["heroalt"])}"></figure>'
+                if p.get("hero") else "")
+
         d = blog / p["slug"]
         d.mkdir(exist_ok=True)
         (d / "index.html").write_text(
@@ -233,6 +281,7 @@ def build(posts):
       <p class="bl-sum">{html.escape(p['summary'])}</p>
       <hr class="bl-rule">
     </div>
+    {hero}
     <div class="bl-body">
 {p['html']}
     </div>

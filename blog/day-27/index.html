@@ -501,12 +501,21 @@
   .bl-body a { color: var(--alarm); }
   .bl-body img { border: 1px solid var(--rule); margin: 1.8rem 0; }
 
+  .bl-hero { margin: 1.9rem 0 0; }
+  .bl-hero img { width: 100%; border: 1px solid var(--rule); max-height: 30rem; object-fit: cover; }
+
   /* archive list */
   .bl-list { list-style: none; margin: 2rem 0 0; padding: 0; }
   .bl-list li { border-top: 1px solid var(--rule); }
   .bl-list li:last-child { border-bottom: 1px solid var(--rule); }
   .bl-list a {
-    display: block; padding: 1.5rem 0; text-decoration: none; color: inherit;
+    display: grid; gap: 1.5rem; align-items: start;
+    padding: 1.5rem 0; text-decoration: none; color: inherit;
+  }
+  @media (min-width: 680px) { .bl-list a { grid-template-columns: 1fr 13rem; } }
+  .bl-list-img img {
+    width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+    border: 1px solid var(--rule);
   }
   .bl-list a:hover .bl-list-t, .bl-list a:focus-visible .bl-list-t {
     background: var(--mark-soft);
@@ -528,6 +537,39 @@
   }
 
   /* homepage teaser */
+  .dgrid {
+    display: grid; gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin-top: 2rem;
+  }
+  @media (min-width: 620px) { .dgrid { grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); } }
+  .dcard {
+    display: flex; flex-direction: column;
+    background: var(--paper); padding: 0 0 1.4rem;
+    text-decoration: none; color: inherit;
+  }
+  .dcard-img { display: block; }
+  .dcard-img img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+  .dcard-d {
+    font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+    padding: 1.35rem 1.4rem 0;
+  }
+  .dcard-t {
+    font-family: var(--serif); font-size: 1.28rem; line-height: 1.22;
+    letter-spacing: -0.012em; padding: 0.45rem 1.4rem 0;
+  }
+  .dcard-s {
+    font-family: var(--sans); font-size: 0.9rem; line-height: 1.5;
+    color: var(--ink-soft); padding: 0.6rem 1.4rem 0; flex: 1;
+  }
+  .dcard-go {
+    font-family: var(--sans); font-size: 0.82rem; font-weight: 600;
+    color: var(--alarm); padding: 1.1rem 1.4rem 0;
+  }
+  .dcard:hover .dcard-t, .dcard:focus-visible .dcard-t {
+    background: var(--mark-soft); box-shadow: 0 0 0 3px var(--mark-soft);
+  }
+
   .dispatch-lead { font-family: var(--sans); font-size: 1.02rem; color: var(--ink-soft); max-width: 46ch; }
   .dispatch-more {
     display: inline-block; margin-top: 1.4rem;
@@ -569,9 +611,10 @@
       <p class="bl-sum">What happened between 7 and 10 August, and why we are now asking MAQIS a question they have not answered.</p>
       <hr class="bl-rule">
     </div>
+    <figure class="bl-hero"><img src="/img/visit-day-22.jpg" alt="One of the cats held during a supervised visit at the KLIA quarantine station"></figure>
     <div class="bl-body">
 <p>Twenty-seven days ago Orion and Nova walked into the KLIA Animal Quarantine Station with every document in order. Today they are still inside, and we still do not have a date.</p>
-<p>This is the first of what will be a daily record. Not because we want to write it, but because every time we have relied on something being said rather than written, it has changed.</p>
+<p>We are keeping a daily record from here. Not because we want to write it, but because every time we have relied on something being said rather than written, it has changed.</p>
 <h2>What we were told on 7 August</h2>
 <p>A compound of MYR 2,000 was payable. Once paid, release would follow one week later. And — stated plainly, because we asked directly — <strong>no repeat titre test would be required.</strong></p>
 <p>We paid the same day. The remittance reference is R39656871355. We did not negotiate, we did not delay, we did not ask for a discount. The sum was demanded and the sum was sent within hours.</p>
@@ -595,7 +638,7 @@
   </article>
 
   <div class="note">
-    <p style="display:flex;gap:2rem;flex-wrap:wrap"></p>
+    <p style="display:flex;gap:2rem;flex-wrap:wrap"><a class="dispatch-more" href="/blog/malaysia-pet-import-warning/">← 11 August 2026</a></p>
     <p>
       Every date, quotation and figure in these dispatches is drawn from dated correspondence,
       payment records and photographs held by the owners. Nothing is reconstructed from memory.

@@ -97,12 +97,13 @@ print(f"  blog: {n} post(s) -> blog/index.html + {n} post page(s)")
 if posts:
     latest = posts[:3]
     cards = "".join(
-        f'''      <div>
-        <span class="mark-badge plain">{p["pretty"]}</span>
-        <h3>{_html.escape(p["title"])}</h3>
-        <p>{_html.escape(p["summary"])}</p>
-        <a href="/blog/{p["slug"]}/">Read the dispatch →</a>
-      </div>\n'''
+        f'''      <a class="dcard" href="/blog/{p["slug"]}/">
+        {'<span class="dcard-img"><img src="' + p["hero"] + '" alt=""></span>' if p.get("hero") else ''}
+        <span class="dcard-d">{p["pretty"]}</span>
+        <span class="dcard-t">{_html.escape(p["title"])}</span>
+        <span class="dcard-s">{_html.escape(p["summary"])}</span>
+        <span class="dcard-go">Read the dispatch →</span>
+      </a>\n'''
         for p in latest
     )
     DISPATCHES = f'''
@@ -113,7 +114,7 @@ if posts:
       Every time we have relied on something being said rather than written, it has changed.
       So there is now a dated record of every development, kept as it happens.
     </p>
-    <div class="act">
+    <div class="dgrid">
 {cards}    </div>
     <a class="dispatch-more" href="/blog/">All {len(posts)} dispatches →</a>
   </section>

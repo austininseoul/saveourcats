@@ -145,6 +145,8 @@ Write a post as markdown in `posts/`, named **`YYYY-MM-DD-slug.md`**:
 title: Day 28 — still no collection date
 date: 2026-08-13
 summary: One sentence. Used on the archive page and in the share card.
+hero: /img/before-the-flight.jpg     # optional
+heroalt: Description of the image     # optional
 ---
 
 Body in markdown. `##` for section headings, `>` for quotes,

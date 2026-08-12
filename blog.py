@@ -144,6 +144,8 @@ def parse(path: pathlib.Path) -> dict:
         "pretty": f"{int(d)} {MONTHS[int(mo) - 1]} {y}",
         "title": meta.get("title", slug.replace("-", " ").capitalize()),
         "summary": meta.get("summary", ""),
+        "hero": meta.get("hero", ""),
+        "heroalt": meta.get("heroalt", ""),
         "html": markdown(body),
         "words": len(body.split()),
     }
