@@ -18,8 +18,10 @@ import mimetypes
 import pathlib
 import re
 import sys
+import datetime
 
 ROOT = pathlib.Path(__file__).parent
+TODAY = datetime.date.today().isoformat()
 SRC = ROOT / "src" / "page.html"
 
 DESC = (
@@ -123,6 +125,45 @@ doc = f"""<!doctype html>
   body {{ margin: 0; }}
   img {{ max-width: 100%; height: auto; display: block; }}
 </style>
+
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "{SHARE_TITLE}",
+  "description": "{SHARE_DESC}",
+  "image": ["https://saveourcats.my/og-image.jpg"],
+  "datePublished": "2026-08-12T00:00:00+08:00",
+  "dateModified": "{TODAY}T00:00:00+08:00",
+  "inLanguage": ["en", "ms"],
+  "isAccessibleForFree": true,
+  "author": {{ "@type": "Person", "name": "The owners of Orion and Nova" }},
+  "publisher": {{
+    "@type": "Organization",
+    "name": "saveourcats.my",
+    "url": "https://saveourcats.my/",
+    "logo": {{ "@type": "ImageObject", "url": "https://saveourcats.my/img/logo.png" }}
+  }},
+  "mainEntityOfPage": {{ "@type": "WebPage", "@id": "https://saveourcats.my/" }},
+  "contentLocation": {{
+    "@type": "Place",
+    "name": "KLIA Animal Quarantine Station",
+    "address": {{
+      "@type": "PostalAddress",
+      "streetAddress": "Kompleks MAQIS KLIA, Jalan Pekeliling 4",
+      "addressLocality": "Sepang",
+      "addressRegion": "Selangor",
+      "postalCode": "64050",
+      "addressCountry": "MY"
+    }}
+  }},
+  "about": [
+    {{ "@type": "Thing", "name": "Animal quarantine" }},
+    {{ "@type": "Thing", "name": "Pet import Malaysia" }},
+    {{ "@type": "GovernmentOrganization", "name": "Malaysian Quarantine and Inspection Services Department (MAQIS)" }}
+  ]
+}}
+</script>
 </head>
 <body>
 {body}

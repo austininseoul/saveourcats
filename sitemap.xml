@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://saveourcats.my/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://saveourcats.my/og-image.jpg</image:loc>
+      <image:title>Orion and Nova</image:title>
+      <image:caption>Two cats held at the KLIA Animal Quarantine Station beyond their confirmed release date.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://saveourcats.my/img/before-the-flight.jpg</image:loc>
+      <image:caption>Orion and Nova the night before their flight to Malaysia, 10 July 2026.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://saveourcats.my/img/visit-day-22.jpg</image:loc>
+      <image:caption>A supervised visit at the KLIA quarantine station, 6 August 2026.</image:caption>
+    </image:image>
+  </url>
+</urlset>

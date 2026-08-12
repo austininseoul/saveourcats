@@ -1,0 +1,15 @@
+# saveourcats.my
+User-agent: *
+Allow: /
+
+# Be explicit for the crawlers that matter for a news-style page
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://saveourcats.my/sitemap.xml

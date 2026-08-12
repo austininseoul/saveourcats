@@ -26,6 +26,33 @@
     position: relative; overflow: hidden;
   }
   .card.sq { height: 1080px; }
+
+  .card.ogphoto {
+    width: 1200px; height: 630px; padding: 0;
+    display: grid; grid-template-columns: 460px 1fr;
+    background: var(--paper); overflow: hidden;
+  }
+  .ogp-photo { overflow: hidden; height: 630px; border-right: 5px solid var(--accent); }
+  .ogp-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; display: block; }
+  .ogp-text { padding: 54px 56px; display: flex; flex-direction: column; }
+  .ogp-brand { display: flex; align-items: center; gap: 14px; }
+  .ogp-brand img { width: 52px; height: 52px; border-radius: 50%; }
+  .ogp-brand span { font-family: var(--sans); font-size: 25px; font-weight: 600; letter-spacing: -0.02em; }
+  .ogp-brand b { color: var(--amber); font-weight: 600; }
+  .ogp-h {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 60px; line-height: 1.04; letter-spacing: -0.018em;
+    margin-top: 34px; max-width: 15ch;
+  }
+  .ogp-h mark { background: var(--accent); padding: 0 8px; }
+  .ogp-sub {
+    font-family: var(--sans); font-size: 24px; line-height: 1.4;
+    color: var(--ink-soft); margin-top: 22px; max-width: 30ch;
+  }
+  .ogp-url {
+    font-family: var(--sans); font-size: 26px; font-weight: 600;
+    color: var(--amber); margin-top: auto;
+  }
   .card.og { width: 1200px; height: 630px; padding: 56px 64px; }
   .card.og h1 { font-size: 64px; margin-top: 18px; }
   .card.og .kick { margin-top: 28px; font-size: 18px; }
@@ -100,7 +127,7 @@
   </div>
 
   <p class="kick">Kuala Lumpur · KLIA Quarantine</p>
-  <h1>Save Our Cats From Over <mark>27+</mark> Days Of Captivity. No Answer From Authorities.</h1>
+  <h1>Caged <mark>27</mark> Days. We Paid The Fine. Then…Nothing.</h1>
   <p class="sub">
     Orion and Nova entered Malaysia <b>legally</b>, with every document and every fee in order.
     They were cleared for release on <b>30 July</b>. They are still inside.
@@ -198,13 +225,17 @@
   </div>
 </div>
 
-<div class="card og" id="og">
-  <div class="top"><img src="saveourcats/img/logo.png" alt=""><p class="wm">saveourcats<span>.my</span></p></div>
-  <p class="kick">Kuala Lumpur · KLIA Quarantine</p>
-  <h1>Save Our Cats From Over <mark>27+</mark> Days Of Captivity. No Answer From Authorities.</h1>
-  <p class="sub">Orion and Nova entered Malaysia legally, with every document and fee in order. They were cleared for release on 30 July. They are still inside.</p>
-  <div class="spacer"></div>
-  <div class="foot"><p class="cta">The full documented record →</p><p class="url">saveourcats.my</p></div>
+<div class="card ogphoto" id="ogphoto">
+  <div class="ogp-photo"><img src="saveourcats/img/before-the-flight.jpg" alt=""></div>
+  <div class="ogp-text">
+    <div class="ogp-brand">
+      <img src="saveourcats/img/logo.png" alt="">
+      <span>saveourcats<b>.my</b></span>
+    </div>
+    <h2 class="ogp-h">Orion &amp; Nova have been caged <mark>27 days</mark> at KLIA.</h2>
+    <p class="ogp-sub">They entered Malaysia legally. They were cleared for release on 30 July. They are still inside.</p>
+    <p class="ogp-url">saveourcats.my</p>
+  </div>
 </div>
 
 <script>
