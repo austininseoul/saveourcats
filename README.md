@@ -133,3 +133,38 @@ bash tools-make-fonts.sh    # needs fonttools + brotli, paths at the top of the 
   blocks external requests and relative paths do not resolve there
 
 Both are produced by the same `build.py` run.
+
+---
+
+## Dispatches (the blog)
+
+Write a post as markdown in `posts/`, named **`YYYY-MM-DD-slug.md`**:
+
+```markdown
+---
+title: Day 28 — still no collection date
+date: 2026-08-13
+summary: One sentence. Used on the archive page and in the share card.
+---
+
+Body in markdown. `##` for section headings, `>` for quotes,
+`-` for lists, `**bold**`, `*italic*`, `[links](https://…)`.
+```
+
+Then:
+
+```bash
+python3 build.py
+```
+
+That regenerates, in one pass:
+
+- `blog/index.html` — the archive, newest first
+- `blog/<slug>/index.html` — one page per post, with BlogPosting schema and prev/next links
+- the **Dispatches** section on the homepage, showing the three most recent
+- `sitemap.xml`, now including every post
+
+The markdown parser lives in `blog.py` and has no dependencies — it covers headings,
+paragraphs, lists, blockquotes, rules, images, links and inline emphasis. Page templates
+are in `blogpages.py` and pull their CSS straight out of `src/page.html`, so the blog can
+never drift from the main article's design.

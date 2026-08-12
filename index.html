@@ -34,6 +34,91 @@
   body { margin: 0; }
   img { max-width: 100%; height: auto; display: block; }
 </style>
+<style>
+  /* ── blog ── */
+  .bl-back {
+    display: inline-block; margin: 0 0 1.6rem;
+    font-family: var(--sans); font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--alarm); text-decoration: none;
+    border-bottom: 2px solid var(--accent); padding-bottom: 2px;
+  }
+  .bl-head { padding: clamp(1.5rem, 4vw, 2.5rem) 0 0; }
+  .bl-date {
+    font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint); margin: 0 0 0.7rem;
+  }
+  .bl-title {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+    line-height: 1.06; letter-spacing: -0.018em;
+    margin: 0; max-width: 24ch; text-wrap: balance;
+  }
+  .bl-sum {
+    font-family: var(--sans); font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.5; color: var(--ink-soft);
+    margin: 1.1rem 0 0; max-width: 46ch;
+  }
+  .bl-rule { border: 0; border-top: 2px solid var(--ink); margin: 1.8rem 0 0; }
+
+  .bl-body { padding: 1.8rem 0 0; max-width: 36rem; }
+  .bl-body p { margin: 0 0 1.3rem; }
+  .bl-body h2 {
+    font-family: var(--sans); font-weight: 600;
+    font-size: clamp(1.08rem, 2.1vw, 1.3rem);
+    margin: 2.5rem 0 0.9rem; max-width: 32ch;
+  }
+  .bl-body h3 { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin: 2rem 0 0.7rem; }
+  .bl-body blockquote {
+    margin: 1.8rem 0; padding: 0 0 0 1.4rem;
+    border-left: 5px solid var(--accent);
+    font-family: var(--serif); font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+    line-height: 1.32; max-width: 30ch;
+  }
+  .bl-body blockquote p { margin: 0; }
+  .bl-body ul, .bl-body ol { margin: 0 0 1.3rem; padding-left: 1.3rem; }
+  .bl-body li { margin-bottom: 0.5rem; }
+  .bl-body hr { border: 0; border-top: 1px solid var(--rule); margin: 2.2rem 0; }
+  .bl-body a { color: var(--alarm); }
+  .bl-body img { border: 1px solid var(--rule); margin: 1.8rem 0; }
+
+  /* archive list */
+  .bl-list { list-style: none; margin: 2rem 0 0; padding: 0; }
+  .bl-list li { border-top: 1px solid var(--rule); }
+  .bl-list li:last-child { border-bottom: 1px solid var(--rule); }
+  .bl-list a {
+    display: block; padding: 1.5rem 0; text-decoration: none; color: inherit;
+  }
+  .bl-list a:hover .bl-list-t, .bl-list a:focus-visible .bl-list-t {
+    background: var(--mark-soft);
+    box-shadow: 0 0 0 4px var(--mark-soft);
+  }
+  .bl-list-d {
+    font-family: var(--sans); font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+  }
+  .bl-list-t {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.25rem, 2.8vw, 1.62rem);
+    line-height: 1.2; letter-spacing: -0.012em;
+    margin: 0.35rem 0 0; max-width: 28ch;
+  }
+  .bl-list-s {
+    font-family: var(--sans); font-size: 0.93rem; line-height: 1.5;
+    color: var(--ink-soft); margin: 0.5rem 0 0; max-width: 50ch;
+  }
+
+  /* homepage teaser */
+  .dispatch-lead { font-family: var(--sans); font-size: 1.02rem; color: var(--ink-soft); max-width: 46ch; }
+  .dispatch-more {
+    display: inline-block; margin-top: 1.4rem;
+    font-family: var(--sans); font-size: 0.86rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--alarm); text-decoration: none;
+    border-bottom: 2px solid var(--accent); padding-bottom: 2px;
+  }
+</style>
 
 <script type="application/ld+json">
 {
@@ -857,6 +942,25 @@
     </div>
 
   </article>
+
+
+  <section id="dispatches">
+    <p class="eyebrow">Dispatches</p>
+    <h2>We are writing down what happens each day.</h2>
+    <p class="dispatch-lead">
+      Every time we have relied on something being said rather than written, it has changed.
+      So there is now a dated record of every development, kept as it happens.
+    </p>
+    <div class="act">
+      <div>
+        <span class="mark-badge plain">12 August 2026</span>
+        <h3>Day 27 — we paid the fine, and the terms changed three days later</h3>
+        <p>What happened between 7 and 10 August, and why we are now asking MAQIS a question they have not answered.</p>
+        <a href="/blog/day-27/">Read the dispatch →</a>
+      </div>
+    </div>
+    <a class="dispatch-more" href="/blog/">All 1 dispatches →</a>
+  </section>
 
   <div class="note">
     <p>

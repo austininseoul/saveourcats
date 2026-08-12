@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 27 — we paid the fine, and the terms changed three days later — saveourcats.my</title>
+<meta name="description" content="What happened between 7 and 10 August, and why we are now asking MAQIS a question they have not answered.">
+<link rel="canonical" href="https://saveourcats.my/blog/day-27/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="saveourcats.my">
+<meta property="og:url" content="https://saveourcats.my/blog/day-27/">
+<meta property="og:title" content="Day 27 — we paid the fine, and the terms changed three days later — saveourcats.my">
+<meta property="og:description" content="What happened between 7 and 10 August, and why we are now asking MAQIS a question they have not answered.">
+<meta property="og:image" content="https://saveourcats.my/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Day 27 — we paid the fine, and the terms changed three days later — saveourcats.my">
+<meta name="twitter:description" content="What happened between 7 and 10 August, and why we are now asking MAQIS a question they have not answered.">
+<meta name="twitter:image" content="https://saveourcats.my/og-image.jpg">
+<meta name="theme-color" content="#FBFAF8">
+<link rel="icon" href="/img/favicon.png" sizes="64x64">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/editorial-regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/montreal-regular.woff2" crossorigin>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { color-scheme: light; }
+  body { margin: 0; }
+  img { max-width: 100%; height: auto; display: block; }
+</style>
+<style>
+
+  /* PP Editorial Old & PP Neue Montreal — Pangram Pangram.
+     Subset to Latin; see fonts/ for the woff2 files. */
+  @font-face { font-family: 'Editorial'; src: url('fonts/editorial-regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Editorial'; src: url('fonts/editorial-italic.woff2') format('woff2');
+    font-weight: 400; font-style: italic; font-display: swap; }
+  @font-face { font-family: 'Montreal'; src: url('fonts/montreal-regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Montreal'; src: url('fonts/montreal-semibold.woff2') format('woff2');
+    font-weight: 600; font-style: normal; font-display: swap; }
+
+
+  :root {
+    --paper:      #FBFAF8;
+    --paper-2:    #F1EFEA;
+    --ink:        #16161A;
+    --ink-soft:   #4C4C55;
+    --ink-faint:  #85858F;
+    --rule:       #DEDBD4;
+    --rule-hard:  #16161A;
+
+    /* Yellow accent, two tiers — bright yellow cannot carry text on white,
+       so blocks and marks take the bright value and text takes the amber. */
+    --accent:     #FFD400;
+    --alarm:      #7A5200;
+    --accent-wash: rgba(255, 212, 0, 0.20);
+    --mark:       #FFE95C;
+    --mark-soft:  rgba(255, 216, 64, 0.46);
+    --doc:        #2C4A57;
+
+    --serif: 'Editorial', Georgia, 'Iowan Old Style', serif;
+    --sans: 'Montreal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+    --col: 38rem;
+    --gutter: clamp(1.15rem, 5vw, 3rem);
+  }
+
+  /* Light only — deliberate. This reads as a printed document, and the
+     evidence photographs are lit for a white ground. */
+  :root { color-scheme: light; }
+
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: var(--sans); font-size: 17.5px; line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 44rem; margin: 0 auto; padding: 0 var(--gutter); }
+  .col { max-width: var(--col); }
+
+  /* ── publication masthead ── */
+  .pub {
+    display: flex; align-items: baseline; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.75rem 2rem;
+    padding: 1.5rem 0 1rem;
+    border-bottom: 3px double var(--rule-hard);
+  }
+  .pub .brand { display: flex; align-items: center; gap: 0.65rem; }
+  .pub .brand img {
+    width: 2.5rem; height: 2.5rem; display: block;
+    border-radius: 50%;
+  }
+  .pub .name {
+    margin: 0; font-family: var(--sans);
+    font-size: 1.02rem; font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .pub .name span { color: var(--alarm); }
+  .pub .tag {
+    margin: 0; font-family: var(--sans);
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ── article head ── */
+  .kicker {
+    font-family: var(--sans); font-size: 0.71rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--alarm); font-weight: 600;
+    margin: clamp(2rem, 5vw, 3.25rem) 0 1.1rem;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.85rem, 6.4vw, 2.9rem);
+    line-height: 1.08; letter-spacing: -0.015em;
+    text-wrap: balance; margin: 0; max-width: 100%;
+  }
+  h1 #dh::after { content: "+"; }
+  h1 #dh {
+    color: var(--ink);
+    background: var(--accent);
+    font-variant-numeric: tabular-nums;
+    padding: 0 0.12em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .deck {
+    font-family: var(--sans); font-weight: 400;
+    font-size: clamp(1.08rem, 2.3vw, 1.32rem);
+    line-height: 1.5; color: var(--ink-soft);
+    max-width: 100%; margin: 1.5rem 0 0; text-wrap: pretty;
+  }
+  .deck strong { color: var(--ink); font-weight: 600; }
+  .byline {
+    display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem;
+    font-family: var(--sans); font-size: 0.75rem;
+    letter-spacing: 0.06em; color: var(--ink-faint);
+    margin: 2rem 0 0; padding: 0.9rem 0;
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  }
+  .byline b { color: var(--ink-soft); font-weight: 500; }
+  .byline .live { color: var(--alarm); font-weight: 600; }
+
+  /* ── Malay summary ── */
+  .ringkasan {
+    border: 2px solid var(--ink);
+    border-top: 8px solid var(--accent);
+    padding: clamp(1.4rem, 3.5vw, 2rem);
+    margin: 2.75rem 0 0.5rem;
+    max-width: 44rem;
+  }
+  .ringkasan .hd {
+    font-family: var(--sans); font-size: 0.7rem;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-faint); margin: 0 0 1rem;
+  }
+  .ringkasan .lead {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+    line-height: 1.35; margin: 0 0 1.25rem; max-width: 38ch;
+  }
+  .ringkasan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.7rem; }
+  .ringkasan li {
+    font-family: var(--sans); font-size: 0.95rem; line-height: 1.55;
+    padding-left: 1.5rem; position: relative; max-width: 54ch;
+  }
+  .ringkasan li::before {
+    content: ""; position: absolute; left: 0; top: 0.6em;
+    width: 0.6rem; height: 0.6rem; background: var(--accent);
+  }
+  .ringkasan .kicker-my {
+    margin: 1.4rem 0 0; padding-top: 1.1rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--serif); font-weight: 400;
+    font-size: 1.02rem; max-width: 46ch;
+  }
+
+  /* ── body ── */
+  article { padding: clamp(2rem, 5vw, 3rem) 0 0; }
+  article p { margin: 0 0 1.35rem; max-width: var(--col); text-wrap: pretty; }
+  .lede::first-letter {
+    float: left; font-family: var(--serif); font-weight: 400;
+    font-size: 4.4rem; line-height: 0.78;
+    padding: 0.3rem 0.55rem 0 0;
+  }
+  h2 {
+    font-family: var(--sans); font-weight: 700;
+    font-size: clamp(1.15rem, 2.3vw, 1.42rem);
+    letter-spacing: -0.015em; line-height: 1.25;
+    margin: 3rem 0 1.1rem; max-width: 32ch; text-wrap: balance;
+  }
+  h2 .num {
+    display: block; font-family: var(--sans);
+    font-size: 0.68rem; letter-spacing: 0.16em;
+    color: var(--alarm); margin-bottom: 0.5rem; font-weight: 600;
+  }
+  strong { font-weight: 700; }
+  .mark { background: var(--mark-soft); box-shadow: 0 0 0 3px var(--mark-soft); }
+
+  /* ── exhibit: the documentary evidence ── */
+  .exhibit {
+    margin: 2.5rem 0 2.75rem;
+    border-top: 3px solid var(--rule-hard);
+    border-bottom: 1px solid var(--rule);
+    padding: 1.25rem 0 1.5rem;
+  }
+  .exhibit .tag {
+    font-family: var(--sans); font-size: 0.68rem;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-faint); margin: 0 0 1.5rem;
+  }
+  .pair { display: grid; gap: 1.75rem; }
+  @media (min-width: 800px) { .pair { grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
+  .pair .when {
+    font-family: var(--sans); font-size: 0.72rem;
+    letter-spacing: 0.05em; color: var(--ink-faint);
+    margin: 0 0 0.7rem;
+  }
+  .pair blockquote {
+    margin: 0; font-family: var(--serif); font-size: clamp(1.2rem, 2.7vw, 1.58rem);
+    line-height: 1.3; letter-spacing: -0.005em; font-weight: 400;
+  }
+  .pair .after blockquote { color: var(--alarm); }
+  .pair .attr {
+    font-family: var(--sans); font-size: 0.84rem;
+    color: var(--ink-faint); margin: 0.85rem 0 0; max-width: 34ch;
+  }
+  .exhibit .foot {
+    font-family: var(--sans); font-size: 0.78rem;
+    color: var(--ink-soft); margin: 1.75rem 0 0;
+    padding-top: 1rem; border-top: 1px solid var(--rule);
+    max-width: none;
+  }
+  .exhibit .foot b { color: var(--alarm); }
+
+  /* ── figures ── */
+  figure { margin: 2.75rem 0; }
+  figure.wide { max-width: 52rem; }
+  figure img {
+    width: 100%; height: auto; display: block;
+    border: 1px solid var(--rule);
+  }
+  figure.portrait img { max-width: 30rem; }
+  figcaption {
+    font-family: var(--sans); font-size: 0.85rem;
+    line-height: 1.5; color: var(--ink-faint);
+    margin-top: 0.85rem; max-width: 46ch;
+    padding-left: 0.9rem; border-left: 4px solid var(--accent);
+  }
+  figcaption b { color: var(--ink-soft); font-weight: 600; }
+  figcaption .stamp {
+    display: block; font-family: var(--sans);
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-faint);
+    margin-top: 0.4rem;
+  }
+
+
+  /* ── chat transcript — WhatsApp ── */
+  .chat {
+    margin: 2.25rem 0 1.25rem;
+    max-width: 32rem;
+    background: #EFEAE2;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(0,0,0,0.022) 0 3px, transparent 3px),
+      radial-gradient(circle at 62% 44%, rgba(0,0,0,0.02) 0 5px, transparent 5px),
+      radial-gradient(circle at 34% 78%, rgba(0,0,0,0.022) 0 4px, transparent 4px),
+      radial-gradient(circle at 84% 88%, rgba(0,0,0,0.018) 0 6px, transparent 6px);
+    background-size: 148px 148px;
+    border: 1px solid #D7D0C7;
+    border-radius: 6px;
+    padding: 0.9rem 0.75rem 1rem;
+    display: grid; gap: 0.32rem;
+    font-family: var(--sans);
+  }
+  .chat .day {
+    justify-self: center;
+    background: #FFFFFF;
+    color: #54656F;
+    font-size: 0.66rem; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 0.28rem 0.75rem; border-radius: 7px;
+    box-shadow: 0 1px 0.5px rgba(11,20,26,0.13);
+    margin: 0.15rem 0 0.45rem;
+  }
+  .msg {
+    position: relative; max-width: 82%;
+    padding: 0.38rem 0.55rem 0.34rem 0.6rem;
+    font-size: 0.925rem; line-height: 1.4;
+    color: #111B21;
+    border-radius: 7.5px;
+    box-shadow: 0 1px 0.5px rgba(11,20,26,0.13);
+  }
+  .msg.in  { justify-self: start; background: #FFFFFF; border-top-left-radius: 0; }
+  .msg.out { justify-self: end;   background: #D9FDD3; border-top-right-radius: 0; }
+
+  /* bubble tails */
+  .msg::before {
+    content: ""; position: absolute; top: 0; width: 0; height: 0;
+    border-style: solid;
+  }
+  .msg.in::before {
+    left: -8px; border-width: 0 8px 8px 0;
+    border-color: transparent #FFFFFF transparent transparent;
+  }
+  .msg.out::before {
+    right: -8px; border-width: 0 0 8px 8px;
+    border-color: transparent transparent transparent #D9FDD3;
+  }
+
+  .msg .who {
+    display: block; font-size: 0.76rem; font-weight: 500;
+    color: #C1533F; margin-bottom: 0.1rem;
+  }
+  .msg .fwd {
+    display: block; font-size: 0.76rem; font-style: italic;
+    color: #667781; margin-bottom: 0.1rem;
+  }
+  .msg .t {
+    float: right; font-size: 0.66rem; color: #667781;
+    margin: 0.4rem -0.1rem -0.1rem 0.55rem; white-space: nowrap;
+  }
+  .msg.out .t::after {
+    content: " ✓✓"; color: #53BDEB; letter-spacing: -0.14em;
+  }
+  /* the decisive line: left as a normal bubble, marked up like a printout */
+  .msg.key mark {
+    background: var(--accent); color: #111B21;
+    padding: 0.06em 0.18em; font-weight: 600;
+    box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+  .chat-note {
+    font-family: var(--sans);
+    font-size: 0.8rem; color: var(--ink-faint);
+    margin: 0.9rem 0 0; max-width: 46ch;
+    padding-left: 0.9rem; border-left: 4px solid var(--accent);
+  }
+
+  /* ── pull quote ── */
+  .pull {
+    margin: 2.5rem 0; padding: 0 0 0 1.5rem;
+    border-left: 5px solid var(--accent);
+    font-size: clamp(1.3rem, 3vw, 1.72rem);
+    line-height: 1.22; font-weight: 400;
+    letter-spacing: -0.008em; max-width: 30ch;
+  }
+
+  /* ── fact box ── */
+  .facts {
+    background: var(--paper-2); padding: clamp(1.35rem, 3vw, 1.85rem);
+    margin: 2.5rem 0; max-width: var(--col);
+  }
+  .facts h3 {
+    margin: 0 0 1rem; font-family: var(--sans);
+    font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 500;
+  }
+  .facts dl { margin: 0; display: grid; gap: 0.6rem 1.25rem; }
+  @media (min-width: 480px) { .facts dl { grid-template-columns: auto 1fr; } }
+  .facts dt {
+    font-family: var(--sans); font-weight: 600; font-size: 0.8rem;
+    color: var(--ink-faint); white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .facts dd { margin: 0; font-size: 0.95rem; }
+
+  /* ── timeline ── */
+  .tline {
+    list-style: none; margin: 2.25rem 0 0; padding: 0;
+    max-width: 44rem;
+  }
+  .tline li {
+    position: relative;
+    padding: 0 0 1.6rem 2.1rem;
+    border-left: 2px solid var(--rule);
+    margin-left: 0.5rem;
+  }
+  .tline li:last-child { border-left-color: transparent; padding-bottom: 0; }
+
+  /* the rail turns to the accent from the day they were due out —
+     everything below this point is time they should never have served */
+  .tline li.overdue { border-left-color: var(--accent); }
+
+  .tline li::before {
+    content: ""; position: absolute; left: -7px; top: 0.32rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--paper); border: 2px solid var(--rule);
+  }
+  .tline li.overdue::before { border-color: var(--accent); }
+  .tline li.hot::before { background: var(--accent); border-color: var(--accent); }
+  .tline li.now::before {
+    width: 16px; height: 16px; left: -9px; top: 0.24rem;
+    background: var(--ink); border-color: var(--ink);
+  }
+
+  .tline time {
+    display: block;
+    font-size: 0.76rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 0.2rem;
+  }
+  .tline li.hot time { color: var(--alarm); }
+  .tline li.now time { color: var(--ink); }
+  .tline p { margin: 0; font-size: 0.97rem; line-height: 1.55; max-width: 52ch; }
+  .tline li.hot p { font-weight: 500; }
+  .tline .tag {
+    display: inline-block; margin-left: 0.5rem;
+    font-size: 0.66rem; font-weight: 600; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--ink);
+    background: var(--accent); padding: 0.1rem 0.4rem;
+    vertical-align: 0.12em;
+  }
+  .tline .gap {
+    display: block; margin-top: 0.5rem;
+    font-size: 0.82rem; color: var(--ink-faint);
+  }
+
+  /* ── action ── */
+  .act { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 2rem 0 0; }
+  @media (min-width: 740px) { .act { grid-template-columns: 1fr 1fr; } }
+  .act > div { background: var(--paper); padding: clamp(1.3rem, 3vw, 1.75rem); }
+  .act .mark-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--sans); font-weight: 700;
+    font-size: 0.74rem; letter-spacing: 0.08em;
+    padding: 0.42rem 0.7rem; margin: 0 0 0.9rem;
+    border: 2px solid var(--ink); background: var(--accent);
+    color: var(--ink); text-transform: uppercase;
+  }
+  .act .mark-badge.plain { background: transparent; }
+  .act h3 { margin: 0 0 0.45rem; font-family: var(--sans); font-size: 0.95rem; font-weight: 700; }
+  .act p { margin: 0 0 0.8rem; font-family: var(--sans); font-size: 0.89rem; color: var(--ink-soft); max-width: 40ch; }
+  .act a {
+    font-family: var(--sans); font-size: 0.8rem; color: var(--alarm);
+    text-decoration: none; border-bottom: 1px solid currentColor;
+    overflow-wrap: anywhere;
+  }
+  .act a:hover, .act a:focus-visible { background: var(--mark-soft); }
+  .act .tel { display: block; font-family: var(--sans); font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.35rem; }
+
+  .note {
+    border-top: 3px double var(--rule-hard);
+    margin-top: 3.5rem; padding: 1.75rem 0 4rem;
+  }
+  .note p {
+    font-family: var(--sans); font-size: 0.87rem;
+    color: var(--ink-faint); max-width: 60ch; margin: 0 0 0.9rem;
+  }
+  .note b { color: var(--ink-soft); }
+
+  a:focus-visible { outline: 2px solid var(--alarm); outline-offset: 3px; }
+
+
+  /* ── blog ── */
+  .bl-back {
+    display: inline-block; margin: 0 0 1.6rem;
+    font-family: var(--sans); font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--alarm); text-decoration: none;
+    border-bottom: 2px solid var(--accent); padding-bottom: 2px;
+  }
+  .bl-head { padding: clamp(1.5rem, 4vw, 2.5rem) 0 0; }
+  .bl-date {
+    font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint); margin: 0 0 0.7rem;
+  }
+  .bl-title {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+    line-height: 1.06; letter-spacing: -0.018em;
+    margin: 0; max-width: 24ch; text-wrap: balance;
+  }
+  .bl-sum {
+    font-family: var(--sans); font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.5; color: var(--ink-soft);
+    margin: 1.1rem 0 0; max-width: 46ch;
+  }
+  .bl-rule { border: 0; border-top: 2px solid var(--ink); margin: 1.8rem 0 0; }
+
+  .bl-body { padding: 1.8rem 0 0; max-width: 36rem; }
+  .bl-body p { margin: 0 0 1.3rem; }
+  .bl-body h2 {
+    font-family: var(--sans); font-weight: 600;
+    font-size: clamp(1.08rem, 2.1vw, 1.3rem);
+    margin: 2.5rem 0 0.9rem; max-width: 32ch;
+  }
+  .bl-body h3 { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin: 2rem 0 0.7rem; }
+  .bl-body blockquote {
+    margin: 1.8rem 0; padding: 0 0 0 1.4rem;
+    border-left: 5px solid var(--accent);
+    font-family: var(--serif); font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+    line-height: 1.32; max-width: 30ch;
+  }
+  .bl-body blockquote p { margin: 0; }
+  .bl-body ul, .bl-body ol { margin: 0 0 1.3rem; padding-left: 1.3rem; }
+  .bl-body li { margin-bottom: 0.5rem; }
+  .bl-body hr { border: 0; border-top: 1px solid var(--rule); margin: 2.2rem 0; }
+  .bl-body a { color: var(--alarm); }
+  .bl-body img { border: 1px solid var(--rule); margin: 1.8rem 0; }
+
+  /* archive list */
+  .bl-list { list-style: none; margin: 2rem 0 0; padding: 0; }
+  .bl-list li { border-top: 1px solid var(--rule); }
+  .bl-list li:last-child { border-bottom: 1px solid var(--rule); }
+  .bl-list a {
+    display: block; padding: 1.5rem 0; text-decoration: none; color: inherit;
+  }
+  .bl-list a:hover .bl-list-t, .bl-list a:focus-visible .bl-list-t {
+    background: var(--mark-soft);
+    box-shadow: 0 0 0 4px var(--mark-soft);
+  }
+  .bl-list-d {
+    font-family: var(--sans); font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+  }
+  .bl-list-t {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.25rem, 2.8vw, 1.62rem);
+    line-height: 1.2; letter-spacing: -0.012em;
+    margin: 0.35rem 0 0; max-width: 28ch;
+  }
+  .bl-list-s {
+    font-family: var(--sans); font-size: 0.93rem; line-height: 1.5;
+    color: var(--ink-soft); margin: 0.5rem 0 0; max-width: 50ch;
+  }
+
+  /* homepage teaser */
+  .dispatch-lead { font-family: var(--sans); font-size: 1.02rem; color: var(--ink-soft); max-width: 46ch; }
+  .dispatch-more {
+    display: inline-block; margin-top: 1.4rem;
+    font-family: var(--sans); font-size: 0.86rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--alarm); text-decoration: none;
+    border-bottom: 2px solid var(--accent); padding-bottom: 2px;
+  }
+
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting",
+"headline":"Day 27 — we paid the fine, and the terms changed three days later",
+"description":"What happened between 7 and 10 August, and why we are now asking MAQIS a question they have not answered.",
+"datePublished":"2026-08-12T09:00:00+08:00",
+"dateModified":"2026-08-12T00:00:00+08:00",
+"image":["https://saveourcats.my/og-image.jpg"],
+"author":{"@type":"Person","name":"The owners of Orion and Nova"},
+"publisher":{"@type":"Organization","name":"saveourcats.my","url":"https://saveourcats.my/"},
+"mainEntityOfPage":{"@type":"WebPage","@id":"https://saveourcats.my/blog/day-27/"},
+"isPartOf":{"@type":"Blog","name":"Dispatches","url":"https://saveourcats.my/blog/"}}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="pub">
+    <div class="brand">
+      <img src="/img/logo.png" alt="" width="512" height="512">
+      <p class="name"><a href="/" style="color:inherit;text-decoration:none">saveourcats<span>.my</span></a></p>
+    </div>
+    <p class="tag">An ongoing record · Kuala Lumpur</p>
+  </div>
+
+  <article>
+    <div class="bl-head">
+      <a class="bl-back" href="/blog/">← Dispatches</a>
+      <p class="bl-date">12 August 2026</p>
+      <h1 class="bl-title">Day 27 — we paid the fine, and the terms changed three days later</h1>
+      <p class="bl-sum">What happened between 7 and 10 August, and why we are now asking MAQIS a question they have not answered.</p>
+      <hr class="bl-rule">
+    </div>
+    <div class="bl-body">
+<p>Twenty-seven days ago Orion and Nova walked into the KLIA Animal Quarantine Station with every document in order. Today they are still inside, and we still do not have a date.</p>
+<p>This is the first of what will be a daily record. Not because we want to write it, but because every time we have relied on something being said rather than written, it has changed.</p>
+<h2>What we were told on 7 August</h2>
+<p>A compound of MYR 2,000 was payable. Once paid, release would follow one week later. And — stated plainly, because we asked directly — <strong>no repeat titre test would be required.</strong></p>
+<p>We paid the same day. The remittance reference is R39656871355. We did not negotiate, we did not delay, we did not ask for a discount. The sum was demanded and the sum was sent within hours.</p>
+<h2>What we were told on 10 August</h2>
+<p>That a repeat rabies titre test is required after all.</p>
+<p>The person who put the question to MAQIS wrote it down as it happened:</p>
+<blockquote><p>"When I ask MAQIS they said no need. Now they need."</p></blockquote>
+<p>We are not paraphrasing. That is the sentence, in writing, from the person who asked.</p>
+<h2>The question nobody will answer</h2>
+<p>We accept the test. We have never disputed it. Our question is narrower than that, and it is the only thing standing between our cats and a release date:</p>
+<p><strong>Who draws the blood, and on what day?</strong></p>
+<p>Orion and Nova are inside a government quarantine station. We see them on supervised visits. We cannot take a blood sample from animals we are not permitted to handle. Only the station can.</p>
+<p>A rabies antibody test at an approved laboratory takes five to ten business days. It is a bounded process with a knowable end. It only becomes indefinite if nobody starts it.</p>
+<p>As of today, no collection date has been given, no laboratory has been named, and no result date exists — because, as far as we can tell, no sample has been taken.</p>
+<h2>Where this stands</h2>
+<p>We have asked, in writing, for seven things: a release date, a collection date, the official receipt for the MYR 2,000, the written compound notice naming the offence, the date the regulation came into force, an explanation of the reversal, and a veterinary report on both animals.</p>
+<p>We have received none of them.</p>
+<p>Nova has lost weight. She has developed a sniffle. We saw it ourselves on 6 August.</p>
+<p>We are not asking for an exemption. We are asking for a decision.</p>
+    </div>
+  </article>
+
+  <div class="note">
+    <p style="display:flex;gap:2rem;flex-wrap:wrap"></p>
+    <p>
+      Every date, quotation and figure in these dispatches is drawn from dated correspondence,
+      payment records and photographs held by the owners. Nothing is reconstructed from memory.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

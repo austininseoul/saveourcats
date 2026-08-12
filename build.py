@@ -19,9 +19,14 @@ import pathlib
 import re
 import sys
 import datetime
+import html as _html
+
+import blog as blogmod
+import blogpages
 
 ROOT = pathlib.Path(__file__).parent
 TODAY = datetime.date.today().isoformat()
+BLOG_CSS = blogpages.EXTRA
 SRC = ROOT / "src" / "page.html"
 
 DESC = (
@@ -84,6 +89,38 @@ except ValueError:
 title_tag = src[t0:t1]
 body = src[t1:].lstrip()
 
+# ── blog ──────────────────────────────────────────────────────────────
+posts = blogmod.load_all()
+n = blogpages.build(posts)
+print(f"  blog: {n} post(s) -> blog/index.html + {n} post page(s)")
+
+if posts:
+    latest = posts[:3]
+    cards = "".join(
+        f'''      <div>
+        <span class="mark-badge plain">{p["pretty"]}</span>
+        <h3>{_html.escape(p["title"])}</h3>
+        <p>{_html.escape(p["summary"])}</p>
+        <a href="/blog/{p["slug"]}/">Read the dispatch →</a>
+      </div>\n'''
+        for p in latest
+    )
+    DISPATCHES = f'''
+  <section id="dispatches">
+    <p class="eyebrow">Dispatches</p>
+    <h2>We are writing down what happens each day.</h2>
+    <p class="dispatch-lead">
+      Every time we have relied on something being said rather than written, it has changed.
+      So there is now a dated record of every development, kept as it happens.
+    </p>
+    <div class="act">
+{cards}    </div>
+    <a class="dispatch-more" href="/blog/">All {len(posts)} dispatches →</a>
+  </section>
+'''
+    body = body.replace("  <div class=\"note\">", DISPATCHES + "\n  <div class=\"note\">", 1)
+
+
 # ── artifact: everything inlined ──
 print("building artifact.html")
 (ROOT / "artifact.html").write_text(title_tag + "\n\n" + inline_assets(body))
@@ -125,6 +162,7 @@ doc = f"""<!doctype html>
   body {{ margin: 0; }}
   img {{ max-width: 100%; height: auto; display: block; }}
 </style>
+<style>{BLOG_CSS}</style>
 
 <script type="application/ld+json">
 {{
@@ -175,3 +213,37 @@ doc = f"""<!doctype html>
 print(f"\nbuilding index.html")
 print(f"  index.html     {len(doc):,} bytes (assets served separately)")
 print(f"  artifact.html  {(ROOT / 'artifact.html').stat().st_size:,} bytes (all inlined)")
+
+# ── sitemap (regenerated so new dispatches are always included) ───────
+urls = [("https://saveourcats.my/", "daily", "1.0")]
+if posts:
+    urls.append(("https://saveourcats.my/blog/", "daily", "0.8"))
+    urls += [(f"https://saveourcats.my/blog/{p['slug']}/", "monthly", "0.7") for p in posts]
+
+def _entry(loc, freq, pri, images=""):
+    return (f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{TODAY}</lastmod>\n"
+            f"    <changefreq>{freq}</changefreq>\n    <priority>{pri}</priority>\n{images}  </url>\n")
+
+IMAGES = """    <image:image>
+      <image:loc>https://saveourcats.my/og-image.jpg</image:loc>
+      <image:title>Orion and Nova</image:title>
+      <image:caption>Two cats held at the KLIA Animal Quarantine Station beyond their confirmed release date.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://saveourcats.my/img/before-the-flight.jpg</image:loc>
+      <image:caption>Orion and Nova the night before their flight to Malaysia, 10 July 2026.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://saveourcats.my/img/visit-day-22.jpg</image:loc>
+      <image:caption>A supervised visit at the KLIA quarantine station, 6 August 2026.</image:caption>
+    </image:image>
+"""
+
+sm = ['<?xml version="1.0" encoding="UTF-8"?>',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+      '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
+for i, (loc, freq, pri) in enumerate(urls):
+    sm.append(_entry(loc, freq, pri, IMAGES if i == 0 else "").rstrip("\n"))
+sm.append("</urlset>")
+(ROOT / "sitemap.xml").write_text("\n".join(sm) + "\n")
+print(f"  sitemap: {len(urls)} URL(s)")
