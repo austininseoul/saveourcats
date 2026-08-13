@@ -13,7 +13,10 @@ TODAY = datetime.date.today().isoformat()
 def site_css() -> str:
     src = (ROOT / "src" / "page.html").read_text()
     blocks = re.findall(r"<style>(.*?)</style>", src, re.S)
-    return "\n".join(blocks)
+    css = "\n".join(blocks)
+    # posts live at /blog/<slug>/, so the relative font URLs in that stylesheet
+    # would resolve to /blog/<slug>/fonts/… and 404 — make them absolute
+    return re.sub(r"url\('((?:img|fonts)/)", r"url('/\1", css)
 
 
 EXTRA = """
@@ -32,7 +35,7 @@ EXTRA = """
     color: var(--ink-faint); margin: 0 0 0.7rem;
   }
   .bl-title {
-    font-family: var(--serif); font-weight: 400;
+    font-family: var(--title); font-weight: 300;
     font-size: clamp(1.9rem, 4.6vw, 3.1rem);
     line-height: 1.06; letter-spacing: -0.018em;
     margin: 0; max-width: 24ch; text-wrap: balance;
@@ -47,15 +50,15 @@ EXTRA = """
   .bl-body { padding: 1.8rem 0 0; max-width: 36rem; }
   .bl-body p { margin: 0 0 1.3rem; }
   .bl-body h2 {
-    font-family: var(--sans); font-weight: 600;
-    font-size: clamp(1.08rem, 2.1vw, 1.3rem);
+    font-family: var(--title); font-weight: 300;
+    font-size: clamp(1.28rem, 2.5vw, 1.6rem);
     margin: 2.5rem 0 0.9rem; max-width: 32ch;
   }
-  .bl-body h3 { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin: 2rem 0 0.7rem; }
+  .bl-body h3 { font-family: var(--title); font-weight: 300; font-size: 1.15rem; margin: 2rem 0 0.7rem; }
   .bl-body blockquote {
     margin: 1.8rem 0; padding: 0 0 0 1.4rem;
     border-left: 5px solid var(--accent);
-    font-family: var(--serif); font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+    font-family: var(--title); font-size: clamp(1.15rem, 2.4vw, 1.4rem);
     line-height: 1.32; max-width: 30ch;
   }
   .bl-body blockquote p { margin: 0; }
@@ -98,7 +101,7 @@ EXTRA = """
     letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
   }
   .bl-list-t {
-    font-family: var(--serif); font-weight: 400;
+    font-family: var(--title); font-weight: 300;
     font-size: clamp(1.25rem, 2.8vw, 1.62rem);
     line-height: 1.2; letter-spacing: -0.012em;
     margin: 0.35rem 0 0; max-width: 28ch;
@@ -127,7 +130,7 @@ EXTRA = """
     padding: 1.35rem 1.4rem 0;
   }
   .dcard-t {
-    font-family: var(--serif); font-size: 1.28rem; line-height: 1.22;
+    font-family: var(--title); font-weight: 300; font-size: 1.28rem; line-height: 1.22;
     letter-spacing: -0.012em; padding: 0.45rem 1.4rem 0;
   }
   .dcard-s {
@@ -177,7 +180,7 @@ def head(title, desc, canonical, extra=""):
 <meta name="theme-color" content="#FBFAF8">
 <link rel="icon" href="/img/favicon.png" sizes="64x64">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
-<link rel="preload" as="font" type="font/woff2" href="/fonts/editorial-regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/museum-light.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/montreal-regular.woff2" crossorigin>
 <style>
   *, *::before, *::after {{ box-sizing: border-box; }}

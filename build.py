@@ -47,6 +47,20 @@ def stamp_counts(html: str) -> str:
         html = re.sub(rf'(<span id="{el}">)\d+(</span>)', rf"\g<1>{n}\g<2>", html)
     return html
 
+
+def rooted(html: str) -> str:
+    """Make img/ and fonts/ URLs absolute.
+
+    src/page.html writes them relative because artifact.html's inliner matches
+    on that form. Relative only resolves at the site root, so /ms/ and
+    /blog/<slug>/ asked for /ms/fonts/... and got 404s — no webfonts, broken
+    images. Every hosted page therefore gets absolute paths; the artifact is
+    built from the relative version first.
+    """
+    html = re.sub(r'src="((?:img|fonts)/)', r'src="/\1', html)
+    html = re.sub(r"url\('((?:img|fonts)/)", r"url('/\1", html)
+    return html
+
 LANG_CSS = """
   .langsw {
     display: inline-flex; border: 2px solid var(--ink);
@@ -254,16 +268,16 @@ def page(lang, title, desc, canonical, body_html):
 
 EN_TITLE = re.sub(r"</?title>", "", title_tag)
 
+# the artifact inlines assets, so it needs the relative URLs — build it first
 (ROOT / "artifact.html").write_text(title_tag + "\n\n" + inline_assets(en_body))
 
 (ROOT / "index.html").write_text(
-    page("en", EN_TITLE, DESC, "https://saveourcats.my/", en_body))
+    page("en", EN_TITLE, DESC, "https://saveourcats.my/", rooted(en_body)))
 
 msdir = ROOT / "ms"
 msdir.mkdir(exist_ok=True)
-# asset URLs are already root-absolute, so the Malay page needs no rewriting
 (msdir / "index.html").write_text(
-    page("ms", MS_TITLE, MS_DESC, "https://saveourcats.my/ms/", ms_body))
+    page("ms", MS_TITLE, MS_DESC, "https://saveourcats.my/ms/", rooted(ms_body)))
 
 print(f"  index.html     {(ROOT / 'index.html').stat().st_size:,} bytes  (en)")
 print(f"  ms/index.html  {(msdir / 'index.html').stat().st_size:,} bytes  (ms)")

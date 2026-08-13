@@ -47,7 +47,7 @@
     color: var(--ink-faint); margin: 0 0 0.7rem;
   }
   .bl-title {
-    font-family: var(--serif); font-weight: 400;
+    font-family: var(--title); font-weight: 300;
     font-size: clamp(1.9rem, 4.6vw, 3.1rem);
     line-height: 1.06; letter-spacing: -0.018em;
     margin: 0; max-width: 24ch; text-wrap: balance;
@@ -62,15 +62,15 @@
   .bl-body { padding: 1.8rem 0 0; max-width: 36rem; }
   .bl-body p { margin: 0 0 1.3rem; }
   .bl-body h2 {
-    font-family: var(--sans); font-weight: 600;
-    font-size: clamp(1.08rem, 2.1vw, 1.3rem);
+    font-family: var(--title); font-weight: 300;
+    font-size: clamp(1.28rem, 2.5vw, 1.6rem);
     margin: 2.5rem 0 0.9rem; max-width: 32ch;
   }
-  .bl-body h3 { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin: 2rem 0 0.7rem; }
+  .bl-body h3 { font-family: var(--title); font-weight: 300; font-size: 1.15rem; margin: 2rem 0 0.7rem; }
   .bl-body blockquote {
     margin: 1.8rem 0; padding: 0 0 0 1.4rem;
     border-left: 5px solid var(--accent);
-    font-family: var(--serif); font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+    font-family: var(--title); font-size: clamp(1.15rem, 2.4vw, 1.4rem);
     line-height: 1.32; max-width: 30ch;
   }
   .bl-body blockquote p { margin: 0; }
@@ -113,7 +113,7 @@
     letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
   }
   .bl-list-t {
-    font-family: var(--serif); font-weight: 400;
+    font-family: var(--title); font-weight: 300;
     font-size: clamp(1.25rem, 2.8vw, 1.62rem);
     line-height: 1.2; letter-spacing: -0.012em;
     margin: 0.35rem 0 0; max-width: 28ch;
@@ -142,7 +142,7 @@
     padding: 1.35rem 1.4rem 0;
   }
   .dcard-t {
-    font-family: var(--serif); font-size: 1.28rem; line-height: 1.22;
+    font-family: var(--title); font-weight: 300; font-size: 1.28rem; line-height: 1.22;
     letter-spacing: -0.012em; padding: 0.45rem 1.4rem 0;
   }
   .dcard-s {
@@ -197,21 +197,15 @@
 </head>
 <body>
 <style>
-  /* PP Museum, PP Editorial Old & PP Neue Montreal — Pangram Pangram.
+  /* PP Museum & PP Neue Montreal — Pangram Pangram.
      Subset to Latin; see fonts/ for the woff2 files. */
-  @font-face { font-family: 'Museum'; src: url('fonts/museum-light.woff2') format('woff2');
+  @font-face { font-family: 'Museum'; src: url('/fonts/museum-light.woff2') format('woff2');
     font-weight: 300; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'Museum'; src: url('fonts/museum-regular.woff2') format('woff2');
+  @font-face { font-family: 'Museum'; src: url('/fonts/museum-regular.woff2') format('woff2');
     font-weight: 400; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'Museum'; src: url('fonts/museum-ultrabold.woff2') format('woff2');
-    font-weight: 800; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'Editorial'; src: url('fonts/editorial-regular.woff2') format('woff2');
+  @font-face { font-family: 'Montreal'; src: url('/fonts/montreal-regular.woff2') format('woff2');
     font-weight: 400; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'Editorial'; src: url('fonts/editorial-italic.woff2') format('woff2');
-    font-weight: 400; font-style: italic; font-display: swap; }
-  @font-face { font-family: 'Montreal'; src: url('fonts/montreal-regular.woff2') format('woff2');
-    font-weight: 400; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'Montreal'; src: url('fonts/montreal-semibold.woff2') format('woff2');
+  @font-face { font-family: 'Montreal'; src: url('/fonts/montreal-semibold.woff2') format('woff2');
     font-weight: 600; font-style: normal; font-display: swap; }
 </style>
 
@@ -234,9 +228,8 @@
     --mark-soft:  rgba(255, 216, 64, 0.46);
     --doc:        #2C4A57;
 
-    /* Titles are set in Museum; body copy stays in Montreal. */
+    /* Headings and display type are set in Museum; body copy stays in Montreal. */
     --title: 'Museum', 'Optima', Palatino, Georgia, serif;
-    --serif: 'Editorial', Georgia, 'Iowan Old Style', serif;
     --sans: 'Montreal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
 
     --col: 38rem;
@@ -336,7 +329,7 @@
     color: var(--ink-faint); margin: 0 0 1rem;
   }
   .ringkasan .lead {
-    font-family: var(--serif); font-weight: 400;
+    font-family: var(--title); font-weight: 400;
     font-size: clamp(1.1rem, 2.4vw, 1.35rem);
     line-height: 1.35; margin: 0 0 1.25rem; max-width: 38ch;
   }
@@ -352,7 +345,7 @@
   .ringkasan .kicker-my {
     margin: 1.4rem 0 0; padding-top: 1.1rem;
     border-top: 1px solid var(--rule);
-    font-family: var(--serif); font-weight: 400;
+    font-family: var(--title); font-weight: 400;
     font-size: 1.02rem; max-width: 46ch;
   }
 
@@ -360,13 +353,13 @@
   article { padding: clamp(2rem, 5vw, 3rem) 0 0; }
   article p { margin: 0 0 1.35rem; max-width: var(--col); text-wrap: pretty; }
   .lede::first-letter {
-    float: left; font-family: var(--serif); font-weight: 400;
+    float: left; font-family: var(--title); font-weight: 400;
     font-size: 4.4rem; line-height: 0.78;
     padding: 0.3rem 0.55rem 0 0;
   }
   h2 {
-    font-family: var(--title); font-weight: 800;
-    font-size: clamp(1.18rem, 2.4vw, 1.48rem);
+    font-family: var(--title); font-weight: 300;
+    font-size: clamp(1.35rem, 2.9vw, 1.78rem);
     letter-spacing: -0.015em; line-height: 1.25;
     margin: 3rem 0 1.1rem; max-width: 32ch; text-wrap: balance;
   }
@@ -398,7 +391,7 @@
     margin: 0 0 0.7rem;
   }
   .pair blockquote {
-    margin: 0; font-family: var(--serif); font-size: clamp(1.2rem, 2.7vw, 1.58rem);
+    margin: 0; font-family: var(--title); font-size: clamp(1.2rem, 2.7vw, 1.58rem);
     line-height: 1.3; letter-spacing: -0.005em; font-weight: 400;
   }
   .pair .after blockquote { color: var(--alarm); }
@@ -532,9 +525,9 @@
     margin: 2.5rem 0; max-width: var(--col);
   }
   .facts h3 {
-    margin: 0 0 1rem; font-family: var(--sans);
-    font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--ink-faint); font-weight: 500;
+    margin: 0 0 1rem; font-family: var(--title); font-weight: 300;
+    font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-faint);
   }
   .facts dl { margin: 0; display: grid; gap: 0.6rem 1.25rem; }
   @media (min-width: 480px) { .facts dl { grid-template-columns: auto 1fr; } }
@@ -611,7 +604,7 @@
     color: var(--ink); text-transform: uppercase;
   }
   .act .mark-badge.plain { background: transparent; }
-  .act h3 { margin: 0 0 0.45rem; font-family: var(--sans); font-size: 0.95rem; font-weight: 700; }
+  .act h3 { margin: 0 0 0.45rem; font-family: var(--title); font-size: 1.08rem; font-weight: 300; }
   .act p { margin: 0 0 0.8rem; font-family: var(--sans); font-size: 0.89rem; color: var(--ink-soft); max-width: 40ch; }
   .act a {
     font-family: var(--sans); font-size: 0.8rem; color: var(--alarm);
@@ -638,7 +631,7 @@
 
   <div class="pub">
     <div class="brand">
-      <img src="img/logo.png" alt="" width="512" height="512">
+      <img src="/img/logo.png" alt="" width="512" height="512">
       <p class="name">saveourcats<span>.my</span></p>
     </div>
     <div class="pub-right"><p class="tag">Rekod berterusan · Kuala Lumpur</p><span class="langsw"><a href="/" lang="en" hreflang="en">EN</a><a href="/ms/"  aria-current="true" lang="ms" hreflang="ms">BM</a></span></div>
@@ -678,7 +671,7 @@
     <p>Segala-galanya tentang ketibaan itu adalah biasa. Tiada apa-apa tentang dua puluh tujuh hari sejak itu yang biasa.</p>
 
     <figure class="portrait">
-      <img src="img/before-the-flight.webp"
+      <img src="/img/before-the-flight.webp"
            alt="Orion and Nova on a bed, each wearing a small t-shirt, the night before their flight to Malaysia.">
       <figcaption><b>Orion dan Nova pada malam 10 Julai</b>, malam sebelum mereka dijemput untuk perjalanan. Pemiliknya telah memakaikan baju kepada mereka untuk perjalanan itu. Mereka tidak pernah dikurung di mana-mana sebelum ini. <span class="stamp">Gambar pemilik · 10 Julai 2026</span></figcaption>
     </figure>
@@ -758,7 +751,7 @@
     <p>Kos yang satu lagi bukan kewangan. Semasa lawatan pada 6 Ogos, pemilik mendapati kedua-dua ekor kucing dalam keadaan tertekan. <strong>Nova telah kehilangan berat badan dan mengalami gejala selesema.</strong> Kedua-duanya tidak pernah dikurung dalam apa jua keadaan sebelum ini. Salah seorang pemilik menyatakan dia menangis setiap hari. Rancangan perjalanan yang diatur berdasarkan tarikh pelepasan 30 Julai telah pun berlalu.</p>
 
     <figure class="portrait">
-      <img src="img/visit-day-22.webp"
+      <img src="/img/visit-day-22.webp"
            alt="One of the cats being held during a supervised visit at the quarantine station on 6 August 2026.">
       <figcaption><b>Hari ke-22, di dalam stesen.</b> Lawatan berpengawasan dibenarkan. Gambar ini diambil pada 6 Ogos — lawatan yang sama ketika kehilangan berat badan dan gejala pernafasan Nova mula-mula disedari. <span class="stamp">Gambar pemilik · 6 Ogos 2026</span></figcaption>
     </figure>
