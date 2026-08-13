@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Bilingual build for saveourcats.my — English at /, Malay at /ms/.
+Bilingual build for saveourcats.my - English at /, Malay at /ms/.
 
 How it works
 ------------
@@ -9,7 +9,7 @@ own inner HTML. src/ms.json maps those hashes to Malay. The Malay page is the
 English page with matching elements swapped.
 
 The consequence worth understanding: **if you edit an English sentence, its hash
-changes and its translation is reported missing.** That is deliberate — it means
+changes and its translation is reported missing.** That is deliberate - it means
 a stale Malay translation can never silently survive an English edit. Run the
 build, read the coverage report, update src/ms.json.
 
@@ -30,7 +30,7 @@ TAGS = r"(p|h1|h2|h3|blockquote|figcaption|li|dd|dt)"
 SKIP = re.compile(
     r"^(?:\s*(?:[\w.+-]+@[\w.-]+"          # emails
     r"|(?:https?://|www\.)\S+"             # urls
-    r"|[\d\s.·—–\-|,:+()]+"                # pure numbers/punctuation
+    r"|[\d\s.·-–\-|,:+()]+"                # pure numbers/punctuation
     r"|saveourcats.*"                      # the wordmark
     r"|\d{2}-\d{4}\s?\d{4}.*"              # phone numbers
     r")\s*)$",

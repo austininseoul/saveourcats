@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Blog builder for saveourcats.my — imported by build.py, or run standalone.
+Blog builder for saveourcats.my - imported by build.py, or run standalone.
 
 Write posts as markdown in posts/, named YYYY-MM-DD-slug.md, with frontmatter:
 
     ---
-    title: Day 28 — still no collection date
+    title: Day 28 - still no collection date
     date: 2026-08-13
     summary: One sentence for the index and the share card.
     ---
@@ -17,7 +17,7 @@ Then `python3 build.py`. Produces:
     blog/index.html                 the archive
     blog/<slug>/index.html          one page per post
 
-No dependencies — the markdown subset below covers everything a dispatch needs.
+No dependencies - the markdown subset below covers everything a dispatch needs.
 """
 import html
 import pathlib
@@ -135,7 +135,7 @@ def parse(path: pathlib.Path) -> dict:
     stem = path.stem
     m = re.match(r"^(\d{4})-(\d{2})-(\d{2})-(.+)$", stem)
     if not m:
-        raise SystemExit(f"post filename must be YYYY-MM-DD-slug.md — got {path.name}")
+        raise SystemExit(f"post filename must be YYYY-MM-DD-slug.md - got {path.name}")
     y, mo, d, slug = m.groups()
 
     return {

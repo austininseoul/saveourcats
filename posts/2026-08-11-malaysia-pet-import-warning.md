@@ -1,5 +1,5 @@
 ---
-title: Before you fly your pet to Malaysia — what changed in 2026, and what to get in writing
+title: Before you fly your pet to Malaysia - what changed in 2026, and what to get in writing
 date: 2026-08-11
 summary: The rules changed in late July 2026 and were applied to animals already in quarantine. Here is what to check, what to insist on in writing, and where the process can trap you.
 hero: /img/before-the-flight.jpg
@@ -22,7 +22,7 @@ about to fly an animal into Malaysia, read it before you book.
 Every problem we have had traces back to something that was said rather than written. A release
 date given verbally. A requirement waived verbally. A payment demanded verbally.
 
-When you are told something — anything — reply by email the same day:
+When you are told something - anything - reply by email the same day:
 
 > *"Further to our conversation today at [time] with [name], my understanding is [X]. Please
 > correct me if that is inaccurate."*
@@ -33,7 +33,7 @@ reason we can prove any of what happened to us.
 ## The rules as they stand
 
 **Quarantine is a minimum of 14 days.** This was raised from 7 days on 28 December 2024. Plan
-around 14, not 7 — a lot of older guidance online is still wrong about this.
+around 14, not 7 - a lot of older guidance online is still wrong about this.
 
 **It can legally be extended to six months.** The regulations permit extension based on a
 case-by-case risk assessment. This is the part almost nobody mentions. "Minimum 14 days" is not
@@ -54,12 +54,12 @@ can be rejected.
 
 **Budget properly for the test.** Laboratories take 5 to 10 business days to process. With
 shipping and documents, three to five weeks is realistic. Some routes also carry a three-month
-waiting period after a successful result — confirm whether yours does *before* you book flights.
+waiting period after a successful result - confirm whether yours does *before* you book flights.
 
 ## Where the animals actually go
 
 There are four animal quarantine stations. **As of August 2026, Batu Maung at Penang
-International Airport is temporarily closed** — MAQIS has published a notice to that effect. If
+International Airport is temporarily closed** - MAQIS has published a notice to that effect. If
 your plan routed through Penang, check its status before you fly.
 
 The others are KLIA in Sepang, Padang Besar on the western Thai border, and Rantau Panjang on
@@ -75,7 +75,7 @@ In late July 2026 a regulation changed. We do not dispute a country's right to c
 
 **The problem is that it was applied to animals already inside the quarantine station.**
 
-Ours were admitted on 16 July. The regulation used to hold them was issued on or about 28 July —
+Ours were admitted on 16 July. The regulation used to hold them was issued on or about 28 July -
 twelve days later. There appears to have been no transitional arrangement for animals already in
 custody. We were told in writing on 2 August that several other agents had animals caught the
 same way.
@@ -102,11 +102,11 @@ receipt. A legitimate charge survives all three questions.
 
 ![An airport departure gate seen through the terminal window](/img/airport-gate.webp)
 
-*Illustration only — not Orion and Nova, and not KLIA. Photo via Unsplash, free licence.*
+*Illustration only - not Orion and Nova, and not KLIA. Photo via Unsplash, free licence.*
 
 ## A checklist before you book
 
-- Confirm the **current** quarantine period and station status directly with MAQIS, not from a blog — including this one
+- Confirm the **current** quarantine period and station status directly with MAQIS, not from a blog - including this one
 - Titre test done at a **WOAH-approved lab**, ≥0.5 IU/ml, sample taken 30 days–24 months before travel
 - Test report in English, on letterhead, **with the microchip number on it**
 - Confirm whether your route carries a post-test waiting period

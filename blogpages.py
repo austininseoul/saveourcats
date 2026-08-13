@@ -15,7 +15,7 @@ def site_css() -> str:
     blocks = re.findall(r"<style>(.*?)</style>", src, re.S)
     css = "\n".join(blocks)
     # posts live at /blog/<slug>/, so the relative font URLs in that stylesheet
-    # would resolve to /blog/<slug>/fonts/… and 404 — make them absolute
+    # would resolve to /blog/<slug>/fonts/… and 404 - make them absolute
     return re.sub(r"url\('((?:img|fonts)/)", r"url('/\1", css)
 
 
@@ -231,7 +231,7 @@ def build(posts):
         for p in posts
     )
     (blog / "index.html").write_text(
-        head("Dispatches — saveourcats.my",
+        head("Dispatches - saveourcats.my",
              "A dated record of what happens each day while Orion and Nova remain held at the KLIA Animal Quarantine Station.",
              "https://saveourcats.my/blog/")
         + f"""
@@ -281,7 +281,7 @@ def build(posts):
         d = blog / p["slug"]
         d.mkdir(exist_ok=True)
         (d / "index.html").write_text(
-            head(f"{p['title']} — saveourcats.my", p["summary"],
+            head(f"{p['title']} - saveourcats.my", p["summary"],
                  f"https://saveourcats.my/blog/{p['slug']}/", ld)
             + f"""
   <article>

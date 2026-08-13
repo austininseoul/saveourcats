@@ -5,9 +5,9 @@ Build the site from src/page.html.
     python3 build.py
 
 Outputs:
-  index.html     for GitHub Pages — relative asset URLs, so fonts and images
+  index.html     for GitHub Pages - relative asset URLs, so fonts and images
                  are cached by the browser across visits
-  artifact.html  for claude.ai — every asset inlined as a data URI, because
+  artifact.html  for claude.ai - every asset inlined as a data URI, because
                  the artifact CSP blocks external requests and relative paths
                  do not resolve there
 
@@ -53,7 +53,7 @@ def rooted(html: str) -> str:
 
     src/page.html writes them relative because artifact.html's inliner matches
     on that form. Relative only resolves at the site root, so /ms/ and
-    /blog/<slug>/ asked for /ms/fonts/... and got 404s — no webfonts, broken
+    /blog/<slug>/ asked for /ms/fonts/... and got 404s - no webfonts, broken
     images. Every hosted page therefore gets absolute paths; the artifact is
     built from the relative version first.
     """
@@ -102,7 +102,7 @@ DESC = (
 SHARE_TITLE = "Save Our Cats From Over 27+ Days Of Captivity. No Answer From Authorities."
 SHARE_DESC = (
     "Two cats cleared every requirement to enter Malaysia. They are still locked in "
-    "quarantine at KLIA — under a rule issued after they arrived."
+    "quarantine at KLIA - under a rule issued after they arrived."
 )
 
 if not SRC.exists():
@@ -194,7 +194,7 @@ i18n.report(done, missing)
 en_body = stamp_counts(with_toggle(body, "en"))
 ms_body = stamp_counts(with_toggle(ms_body, "ms"))
 
-MS_TITLE = "Selamatkan Kucing Kami — Ditahan di Kuarantin KLIA — saveourcats.my"
+MS_TITLE = "Selamatkan Kucing Kami - Ditahan di Kuarantin KLIA - saveourcats.my"
 MS_DESC = ("Orion dan Nova masuk ke Malaysia secara sah dengan dokumen dan bayaran lengkap. "
            "Tarikh pelepasan disahkan 30 Julai. Mereka masih ditahan di Stesen Kuarantin Haiwan "
            "KLIA, di bawah peraturan yang dikeluarkan dua belas hari selepas mereka tiba.")
@@ -268,7 +268,7 @@ def page(lang, title, desc, canonical, body_html):
 
 EN_TITLE = re.sub(r"</?title>", "", title_tag)
 
-# the artifact inlines assets, so it needs the relative URLs — build it first
+# the artifact inlines assets, so it needs the relative URLs - build it first
 (ROOT / "artifact.html").write_text(title_tag + "\n\n" + inline_assets(en_body))
 
 (ROOT / "index.html").write_text(

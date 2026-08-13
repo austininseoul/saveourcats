@@ -1,6 +1,6 @@
 # saveourcats.my
 
-The public record of two cats — **Orion and Nova** — held at the KLIA Animal Quarantine
+The public record of two cats - **Orion and Nova** - held at the KLIA Animal Quarantine
 Station in Malaysia beyond their confirmed release date.
 
 They entered Malaysia legally on **16 July 2026** through a MAQIS-registered agent, with
@@ -14,7 +14,7 @@ They are still inside.
 | | |
 |---|---|
 | Admitted to quarantine | 16 July 2026, KLIA |
-| Release confirmed for | 30 July 2026 — not honoured |
+| Release confirmed for | 30 July 2026 - not honoured |
 | Regulation applied | issued ~28 July 2026, **twelve days after admission** |
 | Compound demanded and paid | MYR 2,000 on 7 August 2026 (ref R39656871355) |
 | Assurance given at the time | no repeat titre test required |
@@ -27,7 +27,7 @@ They are still inside.
 
 ## Editing the site
 
-`src/page.html` is the source. `index.html` is generated — **never edit it by hand.**
+`src/page.html` is the source. `index.html` is generated - **never edit it by hand.**
 
 ```bash
 python3 build.py     # src/page.html -> index.html
@@ -41,10 +41,10 @@ The day counter in the headline and byline is computed in the browser from the
 
 ## Before the site goes public
 
-1. **Add `og-image.jpg`** to the repo root — a real photograph of Orion and Nova,
+1. **Add `og-image.jpg`** to the repo root - a real photograph of Orion and Nova,
    1200×630. This is the image that appears when the link is shared. Without it the
    share cards render blank.
-2. **Confirm DNS** — see below.
+2. **Confirm DNS** - see below.
 3. **Flip the repo to public** and enable Pages.
 
 ## Hosting
@@ -91,13 +91,13 @@ without edit.
 ## Share kit
 
 `share/` holds ready-to-post graphics at platform dimensions. Generated from
-`src/cards.html` — edit that, re-render, replace.
+`src/cards.html` - edit that, re-render, replace.
 
 | File | Size | Use |
 |---|---|---|
-| `card-1-hook.jpg` | 1080×1350 | Instagram / Threads — the opener, with the photo |
+| `card-1-hook.jpg` | 1080×1350 | Instagram / Threads - the opener, with the photo |
 | `card-2-quotes.jpg` | 1080×1350 | The documented reversal, both quotes side by side |
-| `card-3-numbers.jpg` | 1080×1080 | Square — the case in five figures |
+| `card-3-numbers.jpg` | 1080×1080 | Square - the case in five figures |
 | `card-4-malay.jpg` | 1080×1350 | Bahasa Malaysia version |
 | `og-image.jpg` | 1200×630 | Link preview card (referenced by index.html) |
 
@@ -109,7 +109,7 @@ Screenshot capture was unreliable at these sizes; PDF is exact.
 
 ## Typefaces
 
-**PP Editorial Old Regular** sets the headlines, pull quotes and the documentary quotations —
+**PP Editorial Old Regular** sets the headlines, pull quotes and the documentary quotations -
 at display sizes its high contrast carries the page without needing weight. Everything else,
 including all body copy, labels and dates, is **PP Neue Montreal**. No monospace anywhere;
 labels get their character from case, tracking and weight instead.
@@ -120,7 +120,7 @@ Both are the **Free For Personal Use** cuts. This is a non-commercial advocacy s
 it ever carries donations, sponsorship, or anything commercial, the licence must be upgraded
 first. The EULAs are in the original font pack.
 
-`fonts/` holds Latin-subset WOFF2 builds — 68 KB for four faces. Regenerate with:
+`fonts/` holds Latin-subset WOFF2 builds - 68 KB for four faces. Regenerate with:
 
 ```bash
 bash tools-make-fonts.sh    # needs fonttools + brotli, paths at the top of the file
@@ -142,7 +142,7 @@ Write a post as markdown in `posts/`, named **`YYYY-MM-DD-slug.md`**:
 
 ```markdown
 ---
-title: Day 28 — still no collection date
+title: Day 28 - still no collection date
 date: 2026-08-13
 summary: One sentence. Used on the archive page and in the share card.
 hero: /img/before-the-flight.jpg     # optional
@@ -161,19 +161,19 @@ python3 build.py
 
 That regenerates, in one pass:
 
-- `blog/index.html` — the archive, newest first
-- `blog/<slug>/index.html` — one page per post, with BlogPosting schema and prev/next links
+- `blog/index.html` - the archive, newest first
+- `blog/<slug>/index.html` - one page per post, with BlogPosting schema and prev/next links
 - the **Dispatches** section on the homepage, showing the three most recent
 - `sitemap.xml`, now including every post
 
-The markdown parser lives in `blog.py` and has no dependencies — it covers headings,
+The markdown parser lives in `blog.py` and has no dependencies - it covers headings,
 paragraphs, lists, blockquotes, rules, images, links and inline emphasis. Page templates
 are in `blogpages.py` and pull their CSS straight out of `src/page.html`, so the blog can
 never drift from the main article's design.
 
 ---
 
-## Bilingual — English at `/`, Malay at `/ms/`
+## Bilingual - English at `/`, Malay at `/ms/`
 
 The Malay edition is **written, not machine-translated.** A translation widget would have
 produced Malay that reads badly to exactly the audience that matters most here, so the
@@ -207,6 +207,6 @@ Both editions carry `hreflang` pointing at each other plus `x-default`, `og:loca
 
 ### Not yet translated
 
-Blog dispatches are English-only. To translate one, the same pattern applies — but the
+Blog dispatches are English-only. To translate one, the same pattern applies - but the
 toggle on a post currently links to the homepage of the other language, not a translated
 post. Worth doing properly if the dispatches become a major channel.
