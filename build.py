@@ -27,6 +27,26 @@ import i18n
 
 ROOT = pathlib.Path(__file__).parent
 TODAY = datetime.date.today().isoformat()
+
+# ── day counts ────────────────────────────────────────────────────────
+# The browser keeps these live and animates them. The figures below are what
+# gets written into the file, so search engines, share previews and anyone
+# without JavaScript see the count as it stood when the site was last built.
+MYT = datetime.timezone(datetime.timedelta(hours=8))
+ADMITTED = datetime.datetime(2026, 7, 16, 0, 10, tzinfo=MYT)   # into quarantine
+RELEASE_DUE = datetime.datetime(2026, 7, 30, 0, 0, tzinfo=MYT)  # confirmed, not honoured
+_now = datetime.datetime.now(MYT)
+DAYS = max((_now - ADMITTED).days, 0)
+OVERDUE = max((_now - RELEASE_DUE).days, 0)
+COUNTS = {"dh": DAYS, "days": DAYS, "d3": DAYS, "d4": OVERDUE}
+
+
+def stamp_counts(html: str) -> str:
+    """Write today's day counts into the spans the browser then keeps live."""
+    for el, n in COUNTS.items():
+        html = re.sub(rf'(<span id="{el}">)\d+(</span>)', rf"\g<1>{n}\g<2>", html)
+    return html
+
 LANG_CSS = """
   .langsw {
     display: inline-flex; border: 2px solid var(--ink);
@@ -117,7 +137,7 @@ try:
 except ValueError:
     sys.exit("source must contain a <title> tag")
 
-title_tag = src[t0:t1]
+title_tag = re.sub(r"Over \d+\+? Days", f"Over {DAYS} Days", src[t0:t1])
 body = src[t1:].lstrip()
 
 
@@ -156,8 +176,9 @@ if posts:
 ms_body, done, missing = i18n.translate(body, i18n.load_ms())
 i18n.report(done, missing)
 
-en_body = with_toggle(body, "en")
-ms_body = with_toggle(ms_body, "ms")
+# stamped after translation, so editing a number never changes an i18n hash
+en_body = stamp_counts(with_toggle(body, "en"))
+ms_body = stamp_counts(with_toggle(ms_body, "ms"))
 
 MS_TITLE = "Selamatkan Kucing Kami — Ditahan di Kuarantin KLIA — saveourcats.my"
 MS_DESC = ("Orion dan Nova masuk ke Malaysia secara sah dengan dokumen dan bayaran lengkap. "
@@ -213,7 +234,7 @@ def page(lang, title, desc, canonical, body_html):
 <meta name="theme-color" content="#FBFAF8">
 <link rel="icon" href="/img/favicon.png" sizes="64x64">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
-<link rel="preload" as="font" type="font/woff2" href="/fonts/editorial-regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/museum-light.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/montreal-regular.woff2" crossorigin>
 <style>
   *, *::before, *::after {{ box-sizing: border-box; }}

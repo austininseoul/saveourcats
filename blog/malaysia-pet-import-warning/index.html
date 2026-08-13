@@ -29,8 +29,14 @@
 </style>
 <style>
 
-  /* PP Editorial Old & PP Neue Montreal — Pangram Pangram.
+  /* PP Museum, PP Editorial Old & PP Neue Montreal — Pangram Pangram.
      Subset to Latin; see fonts/ for the woff2 files. */
+  @font-face { font-family: 'Museum'; src: url('fonts/museum-light.woff2') format('woff2');
+    font-weight: 300; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Museum'; src: url('fonts/museum-regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Museum'; src: url('fonts/museum-ultrabold.woff2') format('woff2');
+    font-weight: 800; font-style: normal; font-display: swap; }
   @font-face { font-family: 'Editorial'; src: url('fonts/editorial-regular.woff2') format('woff2');
     font-weight: 400; font-style: normal; font-display: swap; }
   @font-face { font-family: 'Editorial'; src: url('fonts/editorial-italic.woff2') format('woff2');
@@ -59,6 +65,8 @@
     --mark-soft:  rgba(255, 216, 64, 0.46);
     --doc:        #2C4A57;
 
+    /* Titles are set in Museum; body copy stays in Montreal. */
+    --title: 'Museum', 'Optima', Palatino, Georgia, serif;
     --serif: 'Editorial', Georgia, 'Iowan Old Style', serif;
     --sans: 'Montreal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
 
@@ -110,9 +118,9 @@
     margin: clamp(2rem, 5vw, 3.25rem) 0 1.1rem;
   }
   h1 {
-    font-family: var(--serif); font-weight: 400;
-    font-size: clamp(1.85rem, 6.4vw, 2.9rem);
-    line-height: 1.08; letter-spacing: -0.015em;
+    font-family: var(--title); font-weight: 300;
+    font-size: clamp(1.9rem, 6.6vw, 3rem);
+    line-height: 1.06; letter-spacing: -0.02em;
     text-wrap: balance; margin: 0; max-width: 100%;
   }
   h1 #dh::after { content: "+"; }
@@ -140,6 +148,10 @@
   }
   .byline b { color: var(--ink-soft); font-weight: 500; }
   .byline .live { color: var(--alarm); font-weight: 600; }
+
+  /* The day counts animate on load; fixed-width digits keep the line from
+     reflowing as the number climbs. */
+  #dh, #days, #d3, #d4 { font-variant-numeric: tabular-nums; }
 
   /* ── Malay summary ── */
   .ringkasan {
@@ -184,8 +196,8 @@
     padding: 0.3rem 0.55rem 0 0;
   }
   h2 {
-    font-family: var(--sans); font-weight: 700;
-    font-size: clamp(1.15rem, 2.3vw, 1.42rem);
+    font-family: var(--title); font-weight: 800;
+    font-size: clamp(1.18rem, 2.4vw, 1.48rem);
     letter-spacing: -0.015em; line-height: 1.25;
     margin: 3rem 0 1.1rem; max-width: 32ch; text-wrap: balance;
   }
@@ -593,7 +605,7 @@
 "headline":"Before you fly your pet to Malaysia — what changed in 2026, and what to get in writing",
 "description":"The rules changed in late July 2026 and were applied to animals already in quarantine. Here is what to check, what to insist on in writing, and where the process can trap you.",
 "datePublished":"2026-08-11T09:00:00+08:00",
-"dateModified":"2026-08-12T00:00:00+08:00",
+"dateModified":"2026-08-13T00:00:00+08:00",
 "image":["https://saveourcats.my/og-image.jpg"],
 "author":{"@type":"Person","name":"The owners of Orion and Nova"},
 "publisher":{"@type":"Organization","name":"saveourcats.my","url":"https://saveourcats.my/"},
